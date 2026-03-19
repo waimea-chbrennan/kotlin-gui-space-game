@@ -17,6 +17,7 @@ application {
 
 dependencies {
     implementation("com.formdev:flatlaf:3.6.2")
+    implementation("com.google.code.gson:gson:2.10.1")
     implementation("com.formdev:flatlaf-intellij-themes:3.6.2")
 }
 

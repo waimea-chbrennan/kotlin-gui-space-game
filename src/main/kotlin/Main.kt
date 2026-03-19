@@ -12,6 +12,9 @@ fun main() {
     val app = App()                 // Get an app state object
     val window = MainWindow(app)    // Spawn the UI, passing in the app state
 
+    val game = Game()
+
+
     SwingUtilities.invokeLater { window.show() }
 }
 
