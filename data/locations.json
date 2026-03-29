@@ -1,0 +1,749 @@
+[
+  {
+    "id": "velun_surface_rift",
+    "name": "Surface Rift — Warm Side",
+    "lockedByItemId": "",
+    "northId": "velun_fault_mouth",
+    "eastId": "velun_ice_shelf",
+    "southId": "",
+    "westId": ""
+  },
+  {
+    "id": "velun_fault_mouth",
+    "name": "Fault Line Mouth",
+    "lockedByItemId": "",
+    "northId": "velun_upper_tunnel",
+    "eastId": "",
+    "southId": "velun_surface_rift",
+    "westId": "velun_equipment_yard"
+  },
+  {
+    "id": "velun_ice_shelf",
+    "name": "Cracked Ice Shelf",
+    "lockedByItemId": "",
+    "northId": "",
+    "eastId": "",
+    "southId": "",
+    "westId": "velun_surface_rift"
+  },
+  {
+    "id": "velun_equipment_yard",
+    "name": "Surface Equipment Yard",
+    "lockedByItemId": "",
+    "northId": "",
+    "eastId": "velun_fault_mouth",
+    "southId": "",
+    "westId": ""
+  },
+  {
+    "id": "velun_upper_tunnel",
+    "name": "Upper Pressurised Tunnel",
+    "lockedByItemId": "",
+    "northId": "velun_drill_chamber",
+    "eastId": "",
+    "southId": "velun_fault_mouth",
+    "westId": ""
+  },
+  {
+    "id": "velun_drill_chamber",
+    "name": "Drill Chamber — Level 3",
+    "lockedByItemId": "",
+    "northId": "velun_deep_bore",
+    "eastId": "velun_crew_quarters",
+    "southId": "velun_upper_tunnel",
+    "westId": ""
+  },
+  {
+    "id": "velun_crew_quarters",
+    "name": "Abandoned Crew Quarters",
+    "lockedByItemId": "",
+    "northId": "",
+    "eastId": "",
+    "southId": "",
+    "westId": "velun_drill_chamber"
+  },
+  {
+    "id": "velun_deep_bore",
+    "name": "Deep Bore — Terminus",
+    "lockedByItemId": "velun_drill_override",
+    "northId": "",
+    "eastId": "",
+    "southId": "velun_drill_chamber",
+    "westId": ""
+  },
+
+  {
+    "id": "mireth_garrison_gate",
+    "name": "Garrison Perimeter Gate",
+    "lockedByItemId": "",
+    "northId": "mireth_parade_ground",
+    "eastId": "mireth_desert_flats",
+    "southId": "",
+    "westId": ""
+  },
+  {
+    "id": "mireth_desert_flats",
+    "name": "Baked Desert Flats",
+    "lockedByItemId": "",
+    "northId": "",
+    "eastId": "",
+    "southId": "",
+    "westId": "mireth_garrison_gate"
+  },
+  {
+    "id": "mireth_parade_ground",
+    "name": "Garrison Parade Ground",
+    "lockedByItemId": "",
+    "northId": "mireth_barracks",
+    "eastId": "mireth_command_block",
+    "southId": "mireth_garrison_gate",
+    "westId": ""
+  },
+  {
+    "id": "mireth_barracks",
+    "name": "Evacuated Barracks",
+    "lockedByItemId": "",
+    "northId": "",
+    "eastId": "",
+    "southId": "mireth_parade_ground",
+    "westId": ""
+  },
+  {
+    "id": "mireth_command_block",
+    "name": "Command Block",
+    "lockedByItemId": "",
+    "northId": "mireth_comms_tower",
+    "eastId": "",
+    "southId": "",
+    "westId": "mireth_parade_ground"
+  },
+  {
+    "id": "mireth_comms_tower",
+    "name": "Communications Tower",
+    "lockedByItemId": "",
+    "northId": "",
+    "eastId": "",
+    "southId": "mireth_command_block",
+    "westId": "mireth_armoury_corridor"
+  },
+  {
+    "id": "mireth_armoury_corridor",
+    "name": "Armoury Corridor",
+    "lockedByItemId": "",
+    "northId": "mireth_weapons_cache",
+    "eastId": "mireth_comms_tower",
+    "southId": "",
+    "westId": ""
+  },
+  {
+    "id": "mireth_weapons_cache",
+    "name": "Sealed Weapons Cache",
+    "lockedByItemId": "mireth_cache_keycard",
+    "northId": "",
+    "eastId": "",
+    "southId": "mireth_armoury_corridor",
+    "westId": ""
+  },
+
+  {
+    "id": "quell_platform_deck",
+    "name": "Research Platform — Main Deck",
+    "lockedByItemId": "",
+    "northId": "quell_instrument_bay",
+    "eastId": "quell_open_ocean",
+    "southId": "quell_lower_hull",
+    "westId": ""
+  },
+  {
+    "id": "quell_open_ocean",
+    "name": "Open Ocean Surface",
+    "lockedByItemId": "",
+    "northId": "",
+    "eastId": "",
+    "southId": "",
+    "westId": "quell_platform_deck"
+  },
+  {
+    "id": "quell_instrument_bay",
+    "name": "Instrument Bay",
+    "lockedByItemId": "",
+    "northId": "quell_control_room",
+    "eastId": "",
+    "southId": "quell_platform_deck",
+    "westId": ""
+  },
+  {
+    "id": "quell_control_room",
+    "name": "Platform Control Room",
+    "lockedByItemId": "",
+    "northId": "",
+    "eastId": "quell_flooded_corridor",
+    "southId": "quell_instrument_bay",
+    "westId": ""
+  },
+  {
+    "id": "quell_flooded_corridor",
+    "name": "Flooded Access Corridor",
+    "lockedByItemId": "quell_airlock_override",
+    "northId": "",
+    "eastId": "",
+    "southId": "",
+    "westId": "quell_control_room"
+  },
+  {
+    "id": "quell_lower_hull",
+    "name": "Lower Hull — Ballast Level",
+    "lockedByItemId": "",
+    "northId": "quell_platform_deck",
+    "eastId": "quell_airlock_bay",
+    "southId": "",
+    "westId": ""
+  },
+  {
+    "id": "quell_airlock_bay",
+    "name": "Tidal Airlock Bay",
+    "lockedByItemId": "",
+    "northId": "",
+    "eastId": "",
+    "southId": "",
+    "westId": "quell_lower_hull"
+  },
+  {
+    "id": "quell_dive_staging",
+    "name": "Dive Staging Pool",
+    "lockedByItemId": "",
+    "northId": "quell_airlock_bay",
+    "eastId": "",
+    "southId": "",
+    "westId": ""
+  },
+
+  {
+    "id": "harven_outskirts",
+    "name": "Settlement Outskirts",
+    "lockedByItemId": "",
+    "northId": "harven_main_street",
+    "eastId": "harven_methane_flats",
+    "southId": "",
+    "westId": ""
+  },
+  {
+    "id": "harven_methane_flats",
+    "name": "Methane Flats",
+    "lockedByItemId": "",
+    "northId": "",
+    "eastId": "",
+    "southId": "",
+    "westId": "harven_outskirts"
+  },
+  {
+    "id": "harven_main_street",
+    "name": "Main Street — Still Lit",
+    "lockedByItemId": "",
+    "northId": "harven_civic_centre",
+    "eastId": "harven_residential_block",
+    "southId": "harven_outskirts",
+    "westId": "harven_filter_station"
+  },
+  {
+    "id": "harven_residential_block",
+    "name": "Residential Block",
+    "lockedByItemId": "",
+    "northId": "",
+    "eastId": "",
+    "southId": "",
+    "westId": "harven_main_street"
+  },
+  {
+    "id": "harven_filter_station",
+    "name": "Atmospheric Filter Station",
+    "lockedByItemId": "",
+    "northId": "",
+    "eastId": "harven_main_street",
+    "southId": "",
+    "westId": ""
+  },
+  {
+    "id": "harven_civic_centre",
+    "name": "Civic Centre",
+    "lockedByItemId": "",
+    "northId": "harven_evacuation_bay",
+    "eastId": "",
+    "southId": "harven_main_street",
+    "westId": "harven_med_wing"
+  },
+  {
+    "id": "harven_med_wing",
+    "name": "Medical Wing",
+    "lockedByItemId": "",
+    "northId": "",
+    "eastId": "harven_civic_centre",
+    "southId": "",
+    "westId": ""
+  },
+  {
+    "id": "harven_evacuation_bay",
+    "name": "Evacuation Bay — Abandoned",
+    "lockedByItemId": "",
+    "northId": "",
+    "eastId": "",
+    "southId": "harven_civic_centre",
+    "westId": ""
+  },
+  {
+    "id": "harven_power_grid",
+    "name": "Central Power Grid",
+    "lockedByItemId": "harven_grid_access",
+    "northId": "",
+    "eastId": "harven_evacuation_bay",
+    "southId": "",
+    "westId": ""
+  },
+
+  {
+    "id": "orix_landing_pad",
+    "name": "Research Station Landing Pad",
+    "lockedByItemId": "",
+    "northId": "orix_station_entrance",
+    "eastId": "orix_rocky_basin",
+    "southId": "",
+    "westId": ""
+  },
+  {
+    "id": "orix_rocky_basin",
+    "name": "Rocky Basin",
+    "lockedByItemId": "",
+    "northId": "",
+    "eastId": "",
+    "southId": "",
+    "westId": "orix_landing_pad"
+  },
+  {
+    "id": "orix_station_entrance",
+    "name": "Station Entrance Airlock",
+    "lockedByItemId": "",
+    "northId": "orix_common_room",
+    "eastId": "",
+    "southId": "orix_landing_pad",
+    "westId": ""
+  },
+  {
+    "id": "orix_common_room",
+    "name": "Common Room",
+    "lockedByItemId": "",
+    "northId": "",
+    "eastId": "orix_observation_deck",
+    "southId": "orix_station_entrance",
+    "westId": "orix_lab_corridor"
+  },
+  {
+    "id": "orix_observation_deck",
+    "name": "Quases Observation Deck",
+    "lockedByItemId": "",
+    "northId": "",
+    "eastId": "",
+    "southId": "",
+    "westId": "orix_common_room"
+  },
+  {
+    "id": "orix_lab_corridor",
+    "name": "Lab Corridor",
+    "lockedByItemId": "",
+    "northId": "orix_data_lab",
+    "eastId": "orix_common_room",
+    "southId": "",
+    "westId": ""
+  },
+  {
+    "id": "orix_data_lab",
+    "name": "Data Lab — Logs Intact",
+    "lockedByItemId": "",
+    "northId": "orix_server_room",
+    "eastId": "",
+    "southId": "orix_lab_corridor",
+    "westId": ""
+  },
+  {
+    "id": "orix_server_room",
+    "name": "Encrypted Server Room",
+    "lockedByItemId": "orix_decryption_key",
+    "northId": "",
+    "eastId": "",
+    "southId": "orix_data_lab",
+    "westId": ""
+  },
+
+  {
+    "id": "calwen_plains_edge",
+    "name": "Plains Edge — Landing Zone",
+    "lockedByItemId": "",
+    "northId": "calwen_open_plains",
+    "eastId": "calwen_colony_road",
+    "southId": "",
+    "westId": ""
+  },
+  {
+    "id": "calwen_open_plains",
+    "name": "Open Plains — Cache Markers",
+    "lockedByItemId": "",
+    "northId": "calwen_northern_cache",
+    "eastId": "",
+    "southId": "calwen_plains_edge",
+    "westId": "calwen_western_cache"
+  },
+  {
+    "id": "calwen_northern_cache",
+    "name": "Buried Cache — North Marker",
+    "lockedByItemId": "",
+    "northId": "",
+    "eastId": "",
+    "southId": "calwen_open_plains",
+    "westId": ""
+  },
+  {
+    "id": "calwen_western_cache",
+    "name": "Buried Cache — West Marker",
+    "lockedByItemId": "",
+    "northId": "",
+    "eastId": "calwen_open_plains",
+    "southId": "",
+    "westId": ""
+  },
+  {
+    "id": "calwen_colony_road",
+    "name": "Colony Access Road",
+    "lockedByItemId": "",
+    "northId": "calwen_settlement_hub",
+    "eastId": "",
+    "southId": "",
+    "westId": "calwen_plains_edge"
+  },
+  {
+    "id": "calwen_settlement_hub",
+    "name": "Settlement Hub",
+    "lockedByItemId": "",
+    "northId": "",
+    "eastId": "calwen_supply_depot",
+    "southId": "calwen_colony_road",
+    "westId": "calwen_comms_relay"
+  },
+  {
+    "id": "calwen_supply_depot",
+    "name": "Supply Depot",
+    "lockedByItemId": "calwen_supply_crate",
+    "northId": "",
+    "eastId": "",
+    "southId": "",
+    "westId": "calwen_settlement_hub"
+  },
+  {
+    "id": "calwen_comms_relay",
+    "name": "Communications Relay",
+    "lockedByItemId": "",
+    "northId": "",
+    "eastId": "calwen_settlement_hub",
+    "southId": "",
+    "westId": ""
+  },
+
+  {
+    "id": "thrake_sulphur_approach",
+    "name": "Sulphur Approach — Volcanic Field",
+    "lockedByItemId": "",
+    "northId": "thrake_outer_perimeter",
+    "eastId": "",
+    "southId": "",
+    "westId": ""
+  },
+  {
+    "id": "thrake_outer_perimeter",
+    "name": "Black Site Outer Perimeter",
+    "lockedByItemId": "",
+    "northId": "thrake_guard_post",
+    "eastId": "thrake_vent_field",
+    "southId": "thrake_sulphur_approach",
+    "westId": ""
+  },
+  {
+    "id": "thrake_vent_field",
+    "name": "Thermal Vent Field",
+    "lockedByItemId": "",
+    "northId": "",
+    "eastId": "",
+    "southId": "",
+    "westId": "thrake_outer_perimeter"
+  },
+  {
+    "id": "thrake_guard_post",
+    "name": "Abandoned Guard Post",
+    "lockedByItemId": "",
+    "northId": "thrake_facility_entrance",
+    "eastId": "",
+    "southId": "thrake_outer_perimeter",
+    "westId": ""
+  },
+  {
+    "id": "thrake_facility_entrance",
+    "name": "Black Site — Entrance",
+    "lockedByItemId": "",
+    "northId": "thrake_ops_centre",
+    "eastId": "",
+    "southId": "thrake_guard_post",
+    "westId": ""
+  },
+  {
+    "id": "thrake_ops_centre",
+    "name": "Operations Centre",
+    "lockedByItemId": "",
+    "northId": "",
+    "eastId": "thrake_detention_block",
+    "southId": "thrake_facility_entrance",
+    "westId": "thrake_lab_wing"
+  },
+  {
+    "id": "thrake_detention_block",
+    "name": "Detention Block",
+    "lockedByItemId": "",
+    "northId": "",
+    "eastId": "",
+    "southId": "",
+    "westId": "thrake_ops_centre"
+  },
+  {
+    "id": "thrake_lab_wing",
+    "name": "Classified Lab Wing",
+    "lockedByItemId": "",
+    "northId": "thrake_deep_vault",
+    "eastId": "thrake_ops_centre",
+    "southId": "",
+    "westId": ""
+  },
+  {
+    "id": "thrake_deep_vault",
+    "name": "Deep Vault — No Evacuation Record",
+    "lockedByItemId": "thrake_vault_override",
+    "northId": "",
+    "eastId": "",
+    "southId": "thrake_lab_wing",
+    "westId": ""
+  },
+
+  {
+    "id": "crael_ring_approach",
+    "name": "Ring Approach — Debris Field",
+    "lockedByItemId": "",
+    "northId": "crael_surface_dock",
+    "eastId": "",
+    "southId": "",
+    "westId": ""
+  },
+  {
+    "id": "crael_surface_dock",
+    "name": "Surface Docking Platform",
+    "lockedByItemId": "",
+    "northId": "crael_processing_hub",
+    "eastId": "crael_ring_view",
+    "southId": "crael_ring_approach",
+    "westId": ""
+  },
+  {
+    "id": "crael_ring_view",
+    "name": "Ring Observation Outcrop",
+    "lockedByItemId": "",
+    "northId": "",
+    "eastId": "",
+    "southId": "",
+    "westId": "crael_surface_dock"
+  },
+  {
+    "id": "crael_processing_hub",
+    "name": "Ore Processing Hub",
+    "lockedByItemId": "",
+    "northId": "crael_orbital_tether",
+    "eastId": "",
+    "southId": "crael_surface_dock",
+    "westId": ""
+  },
+  {
+    "id": "crael_orbital_tether",
+    "name": "Orbital Tether Station",
+    "lockedByItemId": "",
+    "northId": "crael_refinery_upper",
+    "eastId": "",
+    "southId": "crael_processing_hub",
+    "westId": ""
+  },
+  {
+    "id": "crael_refinery_upper",
+    "name": "Decaying Refinery — Upper Level",
+    "lockedByItemId": "",
+    "northId": "",
+    "eastId": "crael_broadcast_room",
+    "southId": "crael_orbital_tether",
+    "westId": "crael_refinery_lower"
+  },
+  {
+    "id": "crael_refinery_lower",
+    "name": "Refinery — Lower Smelting Bay",
+    "lockedByItemId": "",
+    "northId": "",
+    "eastId": "crael_refinery_upper",
+    "southId": "",
+    "westId": ""
+  },
+  {
+    "id": "crael_broadcast_room",
+    "name": "Maintenance Ping Broadcast Room",
+    "lockedByItemId": "crael_broadcast_access",
+    "northId": "",
+    "eastId": "",
+    "southId": "",
+    "westId": "crael_refinery_upper"
+  },
+
+  {
+    "id": "akhemvar_equator_belt",
+    "name": "Twilight Belt — Equator",
+    "lockedByItemId": "",
+    "northId": "akhemvar_dome_approach",
+    "eastId": "akhemvar_tilt_plain",
+    "southId": "",
+    "westId": ""
+  },
+  {
+    "id": "akhemvar_tilt_plain",
+    "name": "Axial Tilt Plain — Seasonal Extreme",
+    "lockedByItemId": "",
+    "northId": "",
+    "eastId": "",
+    "southId": "",
+    "westId": "akhemvar_equator_belt"
+  },
+  {
+    "id": "akhemvar_dome_approach",
+    "name": "Colonist Dome — Approach Path",
+    "lockedByItemId": "",
+    "northId": "akhemvar_dome_airlock",
+    "eastId": "",
+    "southId": "akhemvar_equator_belt",
+    "westId": ""
+  },
+  {
+    "id": "akhemvar_dome_airlock",
+    "name": "Dome Airlock — Sealed",
+    "lockedByItemId": "",
+    "northId": "akhemvar_dome_interior",
+    "eastId": "",
+    "southId": "akhemvar_dome_approach",
+    "westId": ""
+  },
+  {
+    "id": "akhemvar_dome_interior",
+    "name": "Dome Interior — Frozen Solid",
+    "lockedByItemId": "",
+    "northId": "akhemvar_provisions_store",
+    "eastId": "akhemvar_residential_ring",
+    "southId": "akhemvar_dome_airlock",
+    "westId": ""
+  },
+  {
+    "id": "akhemvar_residential_ring",
+    "name": "Residential Ring",
+    "lockedByItemId": "",
+    "northId": "",
+    "eastId": "",
+    "southId": "",
+    "westId": "akhemvar_dome_interior"
+  },
+  {
+    "id": "akhemvar_provisions_store",
+    "name": "Abandoned Provisions Store",
+    "lockedByItemId": "akhemvar_provisions_access",
+    "northId": "",
+    "eastId": "",
+    "southId": "akhemvar_dome_interior",
+    "westId": ""
+  },
+  {
+    "id": "akhemvar_admin_block",
+    "name": "Dome Administration Block",
+    "lockedByItemId": "",
+    "northId": "",
+    "eastId": "akhemvar_provisions_store",
+    "southId": "",
+    "westId": ""
+  },
+
+  {
+    "id": "presso_descent_pad",
+    "name": "Armoured Descent Pad",
+    "lockedByItemId": "",
+    "northId": "presso_rig_exterior",
+    "eastId": "",
+    "southId": "",
+    "westId": ""
+  },
+  {
+    "id": "presso_rig_exterior",
+    "name": "Mining Rig — Exterior Shell",
+    "lockedByItemId": "",
+    "northId": "presso_rig_airlock",
+    "eastId": "presso_corrosive_flats",
+    "southId": "presso_descent_pad",
+    "westId": ""
+  },
+  {
+    "id": "presso_corrosive_flats",
+    "name": "Corrosive Flats — Needle Rain",
+    "lockedByItemId": "",
+    "northId": "",
+    "eastId": "",
+    "southId": "",
+    "westId": "presso_rig_exterior"
+  },
+  {
+    "id": "presso_rig_airlock",
+    "name": "Rig Airlock — Pressurised",
+    "lockedByItemId": "",
+    "northId": "presso_control_deck",
+    "eastId": "",
+    "southId": "presso_rig_exterior",
+    "westId": ""
+  },
+  {
+    "id": "presso_control_deck",
+    "name": "Autonomous Control Deck",
+    "lockedByItemId": "",
+    "northId": "",
+    "eastId": "presso_drill_arm_bay",
+    "southId": "presso_rig_airlock",
+    "westId": "presso_fuel_storage"
+  },
+  {
+    "id": "presso_drill_arm_bay",
+    "name": "Drill Arm Bay — Still Cycling",
+    "lockedByItemId": "presso_drill_shutoff",
+    "northId": "",
+    "eastId": "",
+    "southId": "",
+    "westId": "presso_control_deck"
+  },
+  {
+    "id": "presso_fuel_storage",
+    "name": "Fuel Storage — Pressurised Tank",
+    "lockedByItemId": "",
+    "northId": "presso_maintenance_shaft",
+    "eastId": "presso_control_deck",
+    "southId": "",
+    "westId": ""
+  },
+  {
+    "id": "presso_maintenance_shaft",
+    "name": "Maintenance Shaft — Deep Level",
+    "lockedByItemId": "",
+    "northId": "",
+    "eastId": "",
+    "southId": "presso_fuel_storage",
+    "westId": ""
+  }
+]

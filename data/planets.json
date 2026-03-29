@@ -1,72 +1,62 @@
 [
   {
     "name": "Velun",
-    "diameter": 3200,
     "description": "Tidally locked ice world. A mining colony bored deep into the warm side fault lines — the tunnels are still pressurised, but something has been moving the equipment.",
     "distance": 72400000,
-    "gravity": 3.1
+    "startLocationId": "velun_surface_rift"
   },
   {
     "name": "Mireth",
-    "diameter": 9800,
     "description": "Cracked desert plains baking under Quases' intensifying radiation. A military garrison was the last to evacuate — their weapons cache was never opened.",
     "distance": 203000000,
-    "gravity": 8.2
+    "startLocationId": "mireth_garrison_gate"
   },
   {
     "name": "Quell",
-    "diameter": 6100,
     "description": "A warm shallow ocean world. Research platforms float abandoned on the surface, slowly listing. The tide schedules were never updated — some airlocks flood twice a day.",
     "distance": 88500000,
-    "gravity": 6.5
+    "startLocationId": "quell_platform_deck"
   },
   {
     "name": "Harven",
-    "diameter": 11200,
     "description": "Methane-purple skies, breathable if you filter. The largest colonist settlement in the system — 40,000 people left in six hours. The lights are still on.",
     "distance": 310000000,
-    "gravity": 9.1
+    "startLocationId": "harven_outskirts"
   },
   {
     "name": "Orix VII",
-    "diameter": 7300,
     "description": "Seventh of seven identical rocky bodies — scientists never understood why. The research station here was studying Quases' expansion. Their final data logs are intact but encrypted.",
     "distance": 550000000,
-    "gravity": 7.7
+    "startLocationId": "orix_landing_pad"
   },
   {
     "name": "Calwen",
-    "diameter": 5500,
     "description": "The most habitable world in the system. The colonists here were last to receive the evacuation order — they had time to bury their supplies. Marked caches are scattered across the plains, if the markers haven't shifted.",
     "distance": 165000000,
-    "gravity": 5.9
+    "startLocationId": "calwen_plains_edge"
   },
   {
     "name": "Thrake",
-    "diameter": 2800,
     "description": "Volcanic, sulphurous, barely survivable even before the star began swelling. A military black site was built here precisely because no one would come looking. No evacuation record exists for it.",
     "distance": 48000000,
-    "gravity": 2.9
+    "startLocationId": "thrake_sulphur_approach"
   },
   {
     "name": "Crael",
-    "diameter": 8400,
     "description": "Ringed world — the rings are glass shards from a shattered moon. Ore refineries orbited the rings; most have decayed into them. One is still broadcasting a maintenance ping on a loop.",
     "distance": 890000000,
-    "gravity": 7.2
+    "startLocationId": "crael_ring_approach"
   },
   {
     "name": "Akhemvar",
-    "diameter": 16900,
     "description": "98° axial tilt. Perpetual twilight at the equator, violent seasonal extremes elsewhere. The colonist domes were built for the stable belt — most are still sealed, frozen solid, and full of abandoned provisions.",
     "distance": 730000000,
-    "gravity": 13.8
+    "startLocationId": "akhemvar_equator_belt"
   },
   {
     "name": "Presso",
-    "diameter": 6700,
     "description": "High-pressure, needle rain, corrosive atmosphere. Only heavily armoured mining rigs could operate here. The rigs are still running on autonomous cycles — no one told them to stop.",
     "distance": 97000000,
-    "gravity": 16.2
+    "startLocationId": "presso_descent_pad"
   }
 ]
