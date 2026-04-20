@@ -5,6 +5,7 @@ import kotlin.math.absoluteValue
 
 const val dataDir = "data/"
 
+val inventory = mutableListOf<Item>()
 enum class Direction {
     UP,
     DOWN,
@@ -20,27 +21,34 @@ class Game {
     var currentPlanet: Planet
 
 
+
     var currentLocation: LocationNode
-    var currentPlanetIndex: Int = 0
+    val currentPlanetIndex: Int
         get() = planets.indexOf(currentPlanet)
 
-    var nextPlanet: Planet? = null
+    val nextPlanet: Planet?
         get() = planets.getOrNull(currentPlanetIndex + 1)
 
-    var previousPlanet: Planet? = null
+    val previousPlanet: Planet?
         get() = planets.getOrNull(currentPlanetIndex - 1)
 
-    var isLocationNorth = false
-        get() = currentLocation!!.northId.isNotEmpty()
 
-    var isLocationEast = false
-        get() = currentLocation!!.eastId.isNotEmpty()
 
-    var isLocationSouth = false
-        get() = currentLocation!!.southId.isNotEmpty()
+    val locationNorth: LocationNode?
+        get() = locations.find { it.id == currentLocation.northId }
 
-    var isLocationWest = false
-        get() = currentLocation!!.westId.isNotEmpty()
+    val locationEast: LocationNode?
+        get() = locations.find { it.id == currentLocation.eastId }
+
+    val locationSouth: LocationNode?
+        get() = locations.find { it.id == currentLocation.southId }
+
+    val locationWest: LocationNode?
+        get() = locations.find { it.id == currentLocation.westId }
+
+
+    val locationItem: Item?
+        get() = items.find { it.locationId == currentLocation.id }
 
 
 
@@ -56,6 +64,8 @@ class Game {
         println(currentLocation.eastId)
         println(currentLocation.southId)
         println(currentLocation.westId)
+
+        inventory.add(Item("test", "Test", "yes", "no", null, "invalid"))
 
     }
     fun loadPlanets() {
@@ -80,20 +90,27 @@ class Game {
     }
 
     fun travelPlanetRelative(position: Int) {
-       //dont travel more than one planet for now
+       //don't travel more than one planet for now
         if (position.absoluteValue!=1) return
         if (currentPlanetIndex + position !in planets.indices) return
         currentPlanet = planets[currentPlanetIndex+position]
         currentLocation = locations.find{ it.id == currentPlanet.startLocationId }!!
     }
 
-    fun travelLocation(direction: Direction) {
+    fun travelLocation(direction: Direction) { //TODO: reliable checking
         currentLocation = when (direction) {
-            Direction.UP -> {locations.find { it.id == currentLocation.northId }!! }
-            Direction.DOWN -> {locations.find { it.id == currentLocation.southId }!! }
-            Direction.LEFT -> {locations.find { it.id == currentLocation.eastId }!! }
-            Direction.RIGHT -> {locations.find { it.id == currentLocation.westId }!! }
+            Direction.UP -> {locationNorth!!}
+            Direction.DOWN -> {locationSouth!!}
+            Direction.LEFT -> {locationWest!!}
+            Direction.RIGHT -> {locationEast!!}
         }
+    }
+
+    fun pickupItem() {
+        if(locationItem==null) return
+        inventory.add(locationItem!!)
+        items.remove(locationItem)
+        println("DEBUG: INVENTORY=${inventory.size}")
     }
 
 
@@ -119,9 +136,13 @@ class LocationNode (
     val westId: String,
 
 ) {
-    fun isLocked(inventory: List<Item>): Boolean {
+    var currentItem: Item? = null
+    fun isLocked(): Boolean {
+        if (lockedByItemId.isEmpty()) return false
         return inventory.find {it.id == lockedByItemId && it.enabled}==null
     }
+
+
 }
 
 
@@ -140,18 +161,14 @@ class Planet(
 class Item (
     val id: String,
     val name: String,
-    val enabledDescription: String,
-    val disabledDescription: String,
-    val dependsOn: String?
+    private val enabledDescription: String,
+    private val disabledDescription: String,
+    val dependsOn: String?,
+    val locationId: String
 ) {
     var enabled: Boolean = false
+        get() = dependsOn == null || inventory.find { it.id == dependsOn && it.enabled }!=null
 
-    fun checkEnable(inventory: List<Item>) {
-        if (dependsOn == null) {enabled=true; return}
-        for (item in inventory) {
-            if (item.id == dependsOn && item.enabled) {enabled=true}
-        }
-    }
 
     fun getDescription(): String {
         return if (enabled) {enabledDescription} else {disabledDescription}

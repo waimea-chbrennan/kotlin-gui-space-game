@@ -3,9 +3,12 @@ import java.awt.Font
 import java.awt.GridBagConstraints
 import java.awt.GridBagLayout
 import java.awt.Insets
+import javax.swing.DefaultComboBoxModel
+import javax.swing.DefaultListModel
 import javax.swing.JButton
 import javax.swing.JFrame
 import javax.swing.JLabel
+import javax.swing.JList
 import javax.swing.JPanel
 
 /**
@@ -19,24 +22,33 @@ class MainWindow(val game: Game) {
     private val panel = JPanel().apply { layout = FlowLayout() }
 
     private val titleLabel = JLabel("Space Game")
+    private val itemsTitle = JLabel("Inventory:")
 
-    private val leftButton = JButton("Left")
-    private val rightButton = JButton("Right")
-    private val upButton = JButton("Up")
-    private val downButton = JButton("Down")
+    private val westButton = JButton("West")
+    private val eastButton = JButton("East")
+    private val northButton = JButton("North")
+    private val southButton = JButton("South")
 
     private val currentPlanetNameLabel = JLabel("")
     private val currentPlanetDescriptionLabel = JLabel("<html>")
     private val currentLocationNodeLabel = JLabel("")
+
+    private val itemPickupButton = JButton("Pick up")
 
 
     private val nextPlanetButton = JButton("")
     private val previousPlanetButton = JButton("")
 
 
+
     private val locationPanel = JPanel().apply { layout = GridBagLayout() }
 
     private val planetPanel = JPanel().apply { layout = GridBagLayout() }
+
+    private val itemsPanel = JPanel().apply { layout = GridBagLayout() }
+
+    private val model = DefaultListModel<String>()
+    private val inventoryList = JList(model)
 
 
 
@@ -61,11 +73,13 @@ class MainWindow(val game: Game) {
         val gbc = GridBagConstraints().apply {}
 
         panel.add(titleLabel)
-        locationPanel.add(leftButton)
-        locationPanel.add(rightButton)
-        locationPanel.add(upButton)
-        locationPanel.add(downButton)
+        locationPanel.add(northButton)
+        locationPanel.add(eastButton)
+        locationPanel.add(southButton)
+        locationPanel.add(westButton)
         locationPanel.add(currentLocationNodeLabel)
+
+        locationPanel.add(itemPickupButton)
 
 
         gbc.gridx = 0
@@ -88,8 +102,16 @@ class MainWindow(val game: Game) {
         planetPanel.add(nextPlanetButton,gbc)
 
 
+
+        itemsPanel.add(itemsTitle)
+        itemsPanel.add(inventoryList)
+
+
+
+
         panel.add(locationPanel)
         panel.add(planetPanel)
+        panel.add(itemsPanel)
 
     }
 
@@ -98,12 +120,13 @@ class MainWindow(val game: Game) {
         currentPlanetNameLabel.font = Font(Font.SANS_SERIF, Font.PLAIN, 24)
         planetPanel.background = java.awt.Color.RED
         locationPanel.background = java.awt.Color.BLUE
+        itemsPanel.background = java.awt.Color(10,30,100)
 
     }
 
     private fun setupWindow() {
         frame.isResizable = false                           // Can't resize
-        frame.defaultCloseOperation = JFrame.EXIT_ON_CLOSE  // Exit upon window close
+        frame.defaultCloseOperation = JFrame.EXIT_ON_CLOSE  // Exit northon window close
         frame.contentPane = panel                           // Define the main content
         frame.pack()
         frame.setLocationRelativeTo(null)                   // Centre on the screen
@@ -113,10 +136,12 @@ class MainWindow(val game: Game) {
         nextPlanetButton.addActionListener { handlePlanetClick(1) }
         previousPlanetButton.addActionListener { handlePlanetClick(-1) }
 
-        leftButton.addActionListener { handleLocationClick(Direction.LEFT) }
-        rightButton.addActionListener { handleLocationClick(Direction.RIGHT) }
-        upButton.addActionListener { handleLocationClick(Direction.UP) }
-        downButton.addActionListener { handleLocationClick(Direction.DOWN) }
+        itemPickupButton.addActionListener { handlePickupItem() }
+
+        westButton.addActionListener { handleLocationClick(Direction.LEFT) }
+        eastButton.addActionListener { handleLocationClick(Direction.RIGHT) }
+        northButton.addActionListener { handleLocationClick(Direction.UP) }
+        southButton.addActionListener { handleLocationClick(Direction.DOWN) }
     }
 
     private fun handlePlanetClick(position: Int) {
@@ -129,24 +154,43 @@ class MainWindow(val game: Game) {
         updateUI()
     }
 
+    private fun handlePickupItem() {
+        game.pickupItem()
+        updateUI()
+    }
+
 
 
 
     fun updateUI() {
         currentPlanetNameLabel.text = "Planet: ${game.currentPlanet.name}"
         currentPlanetDescriptionLabel.text = "<html>${game.currentPlanet.description}"
-        currentLocationNodeLabel.text = game.currentLocation!!.id.toString()
+        currentLocationNodeLabel.text = game.currentLocation.id
 
-        leftButton.isEnabled = game.isLocationWest
-        upButton.isEnabled = game.isLocationNorth
-        rightButton.isEnabled = game.isLocationEast
-        downButton.isEnabled = game.isLocationSouth
+        itemPickupButton.isEnabled = game.locationItem != null
+        itemPickupButton.text = if (game.locationItem!=null) "Pick Up: ${game.locationItem?.name}" else "Nothing Here"
+
+        westButton.background = if(game.locationWest!=null && game.locationWest!!.isLocked()) java.awt.Color(100,0,0) else java.awt.Color(5,100,5)
+        northButton.background = if(game.locationNorth!=null && game.locationNorth!!.isLocked()) java.awt.Color(100,0,0) else java.awt.Color(5,100,5)
+        eastButton.background = if(game.locationEast!=null && game.locationEast!!.isLocked()) java.awt.Color(100,0,0) else java.awt.Color(5,100,5)
+        southButton.background = if(game.locationSouth!=null && game.locationSouth!!.isLocked()) java.awt.Color(100,0,0) else java.awt.Color(5,100,5)
+
+        westButton.isEnabled = game.locationWest!=null
+        northButton.isEnabled = game.locationNorth!=null
+        eastButton.isEnabled = game.locationEast!=null
+        southButton.isEnabled = game.locationSouth!=null
+
 
         nextPlanetButton.text = if(game.nextPlanet==null) "No Next" else "Next: ${game.nextPlanet!!.name}"
         previousPlanetButton.text = if(game.previousPlanet==null) "No Previous" else "Prev: ${game.previousPlanet!!.name}"
 
         nextPlanetButton.isEnabled = game.nextPlanet!=null
         previousPlanetButton.isEnabled = game.previousPlanet!=null
+
+        model.removeAllElements()
+        inventory.forEachIndexed { index, item ->
+            model.add(index,"${item.name} - ${item.getDescription()}")
+        }
 
     }
 
