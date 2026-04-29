@@ -65,8 +65,6 @@ class Game {
         println(currentLocation.southId)
         println(currentLocation.westId)
 
-        inventory.add(Item("test", "Test", "yes", "no", null, "invalid"))
-
     }
     fun loadPlanets() {
         val file = File(dataDir + "planets.json")
@@ -89,12 +87,22 @@ class Game {
         locations.addAll(newLocations)
     }
 
-    fun travelPlanetRelative(position: Int) {
-       //don't travel more than one planet for now
-        if (position.absoluteValue!=1) return
-        if (currentPlanetIndex + position !in planets.indices) return
-        currentPlanet = planets[currentPlanetIndex+position]
-        currentLocation = locations.find{ it.id == currentPlanet.startLocationId }!!
+    fun travelPlanetRelative(direction: Direction) {
+        //Handle Left and Right Cases, complex planet movement not implemented
+        when (direction) {
+            Direction.LEFT -> {
+                if (currentPlanetIndex + 1 !in planets.indices) return
+                currentPlanet = planets[currentPlanetIndex+1]
+            }
+            Direction.RIGHT -> {
+                if (currentPlanetIndex - 1 !in planets.indices) return
+                currentPlanet = planets[currentPlanetIndex-1]
+            }
+            else -> {
+                error("Up and Down movement to Planets not implemented, please use Direction.LEFT and Direction.RIGHT")
+            }
+        }
+        currentLocation = locations.find { it.id == currentPlanet.startLocationId }!!
     }
 
     fun travelLocation(direction: Direction) { //TODO: reliable checking
@@ -116,16 +124,9 @@ class Game {
 
 }
 
-// add base feat if time at end of project
-//class Base (
-//    val name: String,
-//    val description: String,
-//    val startLocationNode: LocationNode,
-//
-//) {
-//
-//}
-
+/**
+ * Location stores the possible cardinal moves and whether it can be moved to.
+ */
 class LocationNode (
     val id: String,
     val name: String,
@@ -136,7 +137,6 @@ class LocationNode (
     val westId: String,
 
 ) {
-    var currentItem: Item? = null
     fun isLocked(): Boolean {
         if (lockedByItemId.isEmpty()) return false
         return inventory.find {it.id == lockedByItemId && it.enabled}==null
@@ -145,30 +145,31 @@ class LocationNode (
 
 }
 
-
+/**
+ *  Planet is the highest level class, needs a specific LodationNode to travel to when user goes to planet.
+ */
 class Planet(
     val name: String,
     val description: String,
-    val distance: Long, //Distance to sun
     val startLocationId: String,
-
+    val imageFile: String?
     ) {
-
-
 }
 
-
+/**
+ * Items reference a location until picked up and recursively check whether they can be enabled.
+ */
 class Item (
     val id: String,
     val name: String,
     private val enabledDescription: String,
     private val disabledDescription: String,
     val dependsOn: String?,
-    val locationId: String
+    val locationId: String,
 ) {
     var enabled: Boolean = false
+        //Enabled if all dependencies are enabled
         get() = dependsOn == null || inventory.find { it.id == dependsOn && it.enabled }!=null
-
 
     fun getDescription(): String {
         return if (enabled) {enabledDescription} else {disabledDescription}

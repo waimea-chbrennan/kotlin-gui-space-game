@@ -7,14 +7,12 @@ import javax.swing.*
  * Application entry point
  */
 fun main() {
-    FlatMacDarkLaf.setup()          // Initialise the LAF
+    FlatMacDarkLaf.setup()
 
     val game = Game()
-    val window = MainWindow(game)    // Spawn the UI, passing in the app state
+    val window = MainWindow(game)
 
-
-
-    SwingUtilities.invokeLater { window.show() }
+    SwingUtilities.invokeLater { window.startup() }
 }
 
 

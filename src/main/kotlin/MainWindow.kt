@@ -5,12 +5,17 @@ import java.awt.GridBagLayout
 import java.awt.Insets
 import javax.swing.DefaultComboBoxModel
 import javax.swing.DefaultListModel
+import javax.swing.ImageIcon
 import javax.swing.JButton
 import javax.swing.JFrame
 import javax.swing.JLabel
 import javax.swing.JList
 import javax.swing.JPanel
+import javax.swing.SwingUtilities
+import javax.swing.UIManager
 
+fun ImageIcon.scaled(width: Int, height: Int): ImageIcon =
+    ImageIcon(image.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH))
 /**
  * Main UI window, handles user clicks, etc.
  *
@@ -19,7 +24,7 @@ import javax.swing.JPanel
 class MainWindow(val game: Game) {
     val frame = JFrame("Space Game")
 
-    private val panel = JPanel().apply { layout = FlowLayout() }
+    private val panel = JPanel().apply { layout = GridBagLayout() }
 
     private val titleLabel = JLabel("Space Game")
     private val itemsTitle = JLabel("Inventory:")
@@ -29,15 +34,25 @@ class MainWindow(val game: Game) {
     private val northButton = JButton("North")
     private val southButton = JButton("South")
 
+
+
+
     private val currentPlanetNameLabel = JLabel("")
     private val currentPlanetDescriptionLabel = JLabel("<html>")
+
+    private val currentPlanetImageLabel = JLabel()
+
+    private val nextPlanetButton = JButton("")
+    private val previousPlanetButton = JButton("")
+
+
+
+
     private val currentLocationNodeLabel = JLabel("")
 
     private val itemPickupButton = JButton("Pick up")
 
 
-    private val nextPlanetButton = JButton("")
-    private val previousPlanetButton = JButton("")
 
 
 
@@ -49,6 +64,9 @@ class MainWindow(val game: Game) {
 
     private val model = DefaultListModel<String>()
     private val inventoryList = JList(model)
+
+
+    val introWindow = IntroWindow(this)
 
 
 
@@ -73,13 +91,19 @@ class MainWindow(val game: Game) {
         val gbc = GridBagConstraints().apply {}
 
         panel.add(titleLabel)
+
+
+
         locationPanel.add(northButton)
         locationPanel.add(eastButton)
         locationPanel.add(southButton)
         locationPanel.add(westButton)
-        locationPanel.add(currentLocationNodeLabel)
 
-        locationPanel.add(itemPickupButton)
+        gbc.gridy = 1
+        locationPanel.add(currentLocationNodeLabel, gbc)
+
+        gbc.gridy = 2
+        locationPanel.add(itemPickupButton ,gbc)
 
 
         gbc.gridx = 0
@@ -88,30 +112,36 @@ class MainWindow(val game: Game) {
         gbc.fill = GridBagConstraints.HORIZONTAL
         planetPanel.add(currentPlanetNameLabel, gbc)
 
+
         gbc.gridx = 0
-        gbc.gridy = 1
+        gbc.gridy = 2
         gbc.fill = GridBagConstraints.HORIZONTAL
         planetPanel.add(currentPlanetDescriptionLabel, gbc)
 
-        gbc.gridx = 0
-        gbc.gridy = 2
+        gbc.gridy = 3
         gbc.fill = GridBagConstraints.NONE
         planetPanel.add(previousPlanetButton, gbc)
         gbc.gridx = 1
-        gbc.gridy = 2
+        gbc.gridy = 3
         planetPanel.add(nextPlanetButton,gbc)
 
+        gbc.gridx = 1
+        gbc.gridy = 4
+        planetPanel.add(currentPlanetImageLabel, gbc)
 
 
         itemsPanel.add(itemsTitle)
         itemsPanel.add(inventoryList)
 
 
-
-
-        panel.add(locationPanel)
-        panel.add(planetPanel)
-        panel.add(itemsPanel)
+        gbc.gridx = 0
+        gbc.gridy = 1
+        panel.add(locationPanel, gbc)
+        gbc.gridy = 2
+        panel.add(planetPanel, gbc)
+//        gbc.gridx = 1
+        gbc.gridy = 3
+        panel.add(itemsPanel, gbc)
 
     }
 
@@ -133,8 +163,8 @@ class MainWindow(val game: Game) {
     }
 
     private fun setupActions() {
-        nextPlanetButton.addActionListener { handlePlanetClick(1) }
-        previousPlanetButton.addActionListener { handlePlanetClick(-1) }
+        nextPlanetButton.addActionListener { handlePlanetClick(Direction.LEFT) }
+        previousPlanetButton.addActionListener { handlePlanetClick(Direction.RIGHT) }
 
         itemPickupButton.addActionListener { handlePickupItem() }
 
@@ -144,8 +174,8 @@ class MainWindow(val game: Game) {
         southButton.addActionListener { handleLocationClick(Direction.DOWN) }
     }
 
-    private fun handlePlanetClick(position: Int) {
-        game.travelPlanetRelative(position)
+    private fun handlePlanetClick(direction: Direction) {
+        game.travelPlanetRelative(direction)
         updateUI()
     }
 
@@ -165,20 +195,24 @@ class MainWindow(val game: Game) {
     fun updateUI() {
         currentPlanetNameLabel.text = "Planet: ${game.currentPlanet.name}"
         currentPlanetDescriptionLabel.text = "<html>${game.currentPlanet.description}"
-        currentLocationNodeLabel.text = game.currentLocation.id
+        currentLocationNodeLabel.text = game.currentLocation.name
 
         itemPickupButton.isEnabled = game.locationItem != null
         itemPickupButton.text = if (game.locationItem!=null) "Pick Up: ${game.locationItem?.name}" else "Nothing Here"
 
-        westButton.background = if(game.locationWest!=null && game.locationWest!!.isLocked()) java.awt.Color(100,0,0) else java.awt.Color(5,100,5)
-        northButton.background = if(game.locationNorth!=null && game.locationNorth!!.isLocked()) java.awt.Color(100,0,0) else java.awt.Color(5,100,5)
-        eastButton.background = if(game.locationEast!=null && game.locationEast!!.isLocked()) java.awt.Color(100,0,0) else java.awt.Color(5,100,5)
-        southButton.background = if(game.locationSouth!=null && game.locationSouth!!.isLocked()) java.awt.Color(100,0,0) else java.awt.Color(5,100,5)
+//        westButton.background = if(game.locationWest!=null && game.locationWest!!.isLocked()) java.awt.Color(100,0,0) else java.awt.Color(5,100,5)
+//        northButton.background = if(game.locationNorth!=null && game.locationNorth!!.isLocked()) java.awt.Color(100,0,0) else java.awt.Color(5,100,5)
+//        eastButton.background = if(game.locationEast!=null && game.locationEast!!.isLocked()) java.awt.Color(100,0,0) else java.awt.Color(5,100,5)
+//        southButton.background = if(game.locationSouth!=null && game.locationSouth!!.isLocked()) java.awt.Color(100,0,0) else java.awt.Color(5,100,5)
 
-        westButton.isEnabled = game.locationWest!=null
-        northButton.isEnabled = game.locationNorth!=null
-        eastButton.isEnabled = game.locationEast!=null
-        southButton.isEnabled = game.locationSouth!=null
+        westButton.isEnabled = game.locationWest!=null// && !game.locationWest!!.isLocked()
+        northButton.isEnabled = game.locationNorth!=null// && !game.locationNorth!!.isLocked()
+        eastButton.isEnabled = game.locationEast!=null //&& !game.locationEast!!.isLocked()
+        southButton.isEnabled = game.locationSouth!=null //&& !game.locationSouth!!.isLocked()
+
+        //if(game.locationNorth?.isLocked() ?: false)
+            UIManager.put("northButton.background", java.awt.Color.RED)
+
 
 
         nextPlanetButton.text = if(game.nextPlanet==null) "No Next" else "Next: ${game.nextPlanet!!.name}"
@@ -192,10 +226,28 @@ class MainWindow(val game: Game) {
             model.add(index,"${item.name} - ${item.getDescription()}")
         }
 
+        if(game.currentPlanet.imageFile!=null) {
+            currentPlanetImageLabel.isVisible = true
+            currentPlanetNameLabel.icon = ImageIcon(ClassLoader.getSystemResource(game.currentPlanet.imageFile)).scaled(220,220)
+        } else {
+            currentPlanetImageLabel.isVisible = false
+        }
+
     }
 
     fun show() {
         frame.isVisible = true
     }
+
+    fun startup() {
+        frame.isVisible = false
+        introWindow.show()
+
+    }
 }
+
+
+
+
+
 
