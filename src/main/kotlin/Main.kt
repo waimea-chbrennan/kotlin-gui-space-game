@@ -1,6 +1,4 @@
 import com.formdev.flatlaf.themes.FlatMacDarkLaf
-import java.awt.Color
-import java.awt.Font
 import javax.swing.*
 
 /**
@@ -11,11 +9,5 @@ fun main() {
 
     val game = Game()
     val window = MainWindow(game)
-
     SwingUtilities.invokeLater { window.startup() }
 }
-
-
-
-
-
