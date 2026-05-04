@@ -13,6 +13,7 @@ import javax.swing.JList
 import javax.swing.JPanel
 import javax.swing.SwingUtilities
 import javax.swing.UIManager
+import javax.swing.border.MatteBorder
 
 fun ImageIcon.scaled(width: Int, height: Int): ImageIcon =
     ImageIcon(image.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH))
@@ -90,7 +91,6 @@ class MainWindow(val game: Game) {
 
         val gbc = GridBagConstraints().apply {}
 
-        panel.add(titleLabel)
 
 
 
@@ -133,14 +133,29 @@ class MainWindow(val game: Game) {
         itemsPanel.add(itemsTitle)
         itemsPanel.add(inventoryList)
 
+        gbc.gridx = 0
+        gbc.gridy = 0
+        gbc.fill = GridBagConstraints.HORIZONTAL
+        gbc.gridwidth = 2
+        gbc.anchor = GridBagConstraints.CENTER
+        panel.add(titleLabel)
 
         gbc.gridx = 0
         gbc.gridy = 1
-        panel.add(locationPanel, gbc)
-        gbc.gridy = 2
+        gbc.fill = GridBagConstraints.NONE
+        gbc.weighty = 1.0
         panel.add(planetPanel, gbc)
-//        gbc.gridx = 1
-        gbc.gridy = 3
+
+        gbc.gridx = 0
+        gbc.gridy = 1
+        gbc.fill = GridBagConstraints.NONE
+        panel.add(locationPanel, gbc)
+
+
+        gbc.gridx = 0
+        gbc.gridy = 2
+        gbc.fill = GridBagConstraints.HORIZONTAL
+        gbc.gridwidth = 3
         panel.add(itemsPanel, gbc)
 
     }
@@ -148,7 +163,8 @@ class MainWindow(val game: Game) {
     private fun setupStyles() {
         titleLabel.font = Font(Font.SANS_SERIF, Font.BOLD, 32)
         currentPlanetNameLabel.font = Font(Font.SANS_SERIF, Font.PLAIN, 24)
-        planetPanel.background = java.awt.Color.RED
+        planetPanel.background = java.awt.Color(20,40,20)
+        planetPanel.border = MatteBorder(0,0,0,3, java.awt.Color(0,150,70))
         locationPanel.background = java.awt.Color.BLUE
         itemsPanel.background = java.awt.Color(10,30,100)
 
