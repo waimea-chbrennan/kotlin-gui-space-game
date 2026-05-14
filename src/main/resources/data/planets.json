@@ -1,63 +1,27 @@
 [
   {
     "name": "Velun",
-    "description": "Tidally locked ice world. A mining colony bored deep into the warm side fault lines — with tunnels.",
+    "description": "A tidally locked ice world — one face always burning, the other frozen solid. The warm side cracked open centuries ago and the mining colony followed, boring deep into the fault lines. The tunnels go further down than the original survey said they would.",
     "distance": 72400000,
     "startLocationId": "velun_surface_rift",
     "imageFile": "images/velun.png"
   },
   {
     "name": "Mireth",
-    "description": "Cracked desert plains baking under Quases' intensifying radiation.",
+    "description": "Used to be survivable. Now Quases bakes it from above and the cracked desert surface just holds the heat. The garrison was the last functioning authority in this part of the system — whoever was stationed here didn't leave in an orderly fashion.",
     "distance": 203000000,
     "startLocationId": "mireth_garrison_gate",
     "imageFile": "images/mireth.png"
   },
   {
-    "name": "Quell",
-    "description": "A warm shallow ocean world. Research platforms float abandoned on the surface, slowly listing.",
-    "distance": 88500000,
-    "startLocationId": "quell_platform_deck"
-  },
-  {
-    "name": "Harven",
-    "description": "Methane-purple skies, breathable if you filter. The largest colonist settlement in the system.",
-    "distance": 310000000,
-    "startLocationId": "harven_outskirts"
-  },
-  {
-    "name": "Orix VII",
-    "description": "Seventh of seven identical rocky bodies — scientists never understood why. The research station here was studying Quases' expansion." ,
-    "distance": 550000000,
-    "startLocationId": "orix_landing_pad"
-  },
-  {
-    "name": "Calwen",
-    "description": "The most habitable world in the system. The colonists here were last to receive the evacuation order — they had time to bury their supplies.",
-    "distance": 165000000,
-    "startLocationId": "calwen_plains_edge"
-  },
-  {
-    "name": "Thrake",
-    "description": "Volcanic, sulphurous, barely survivable even before the star began swelling.",
-    "distance": 48000000,
-    "startLocationId": "thrake_sulphur_approach"
-  },
-  {
     "name": "Crael",
-    "description": "Ringed world — the rings are glass shards from a shattered moon.",
+    "description": "The rings aren't ice. They're glass — what's left of a moon that came apart about three hundred years ago, nobody agrees on why. The ore processing operation out here kept running on automated systems long after the crew left. Some of it still is.",
     "distance": 890000000,
     "startLocationId": "crael_ring_approach"
   },
   {
-    "name": "Akhemvar",
-    "description": "98° axial tilt. Perpetual twilight at the equator, violent seasonal extremes elsewhere.",
-    "distance": 730000000,
-    "startLocationId": "akhemvar_equator_belt"
-  },
-  {
     "name": "Presso",
-    "description": "High-pressure, needle rain, corrosive atmosphere. Only heavily armoured mining rigs could operate here.",
+    "description": "The atmosphere here will dissolve unshielded equipment in about four hours. The mining rigs were built to handle it — heavily armoured, mostly autonomous, and apparently still cycling. Someone should have switched them off.",
     "distance": 97000000,
     "startLocationId": "presso_descent_pad"
   }

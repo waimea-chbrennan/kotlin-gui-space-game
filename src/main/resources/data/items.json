@@ -1,259 +1,165 @@
 [
   {
-    "id": "velun_pressure_key",
-    "name": "Pressure Seal Key",
-    "enabledDescription": "A calibrated pressure key. It should fit the deep bore bulkhead.",
-    "disabledDescription": "A pressure key, but the calibration dial is smashed.",
+    "id": "velun_vent_torch",
+    "name": "Vent Torch",
+    "enabledDescription": "Still pressurised. The bore seal looks welded shut from the inside.",
+    "disabledDescription": "Dead igniter.",
     "dependsOn": null,
     "locationId": "velun_equipment_yard"
   },
   {
-    "id": "velun_calibration_tool",
-    "name": "Calibration Tool",
-    "enabledDescription": "A recalibrated pressure key, ready to use.",
-    "disabledDescription": "You need the calibration tool to fix the pressure key first.",
-    "dependsOn": "velun_pressure_key",
+    "id": "velun_igniter_patch",
+    "name": "Igniter Patch",
+    "enabledDescription": "Fitted. Lights on the first strike.",
+    "disabledDescription": "Nothing to fit it to yet.",
+    "dependsOn": "velun_vent_torch",
     "locationId": "velun_crew_quarters"
   },
   {
-    "id": "velun_drill_override",
-    "name": "Drill Override Card",
-    "enabledDescription": "An override card for the drill chamber bulkhead. The deep bore is accessible.",
-    "disabledDescription": "An override card, but it won't work without a pressurised seal behind it.",
-    "dependsOn": "velun_calibration_tool",
-    "locationId": "thrake_deep_vault"
+    "id": "velun_safety_gear",
+    "name": "Welding Gear",
+    "enabledDescription": "You can now cut the bore seal safely.",
+    "disabledDescription": "Safety first :)",
+    "dependsOn": "velun_igniter_patch",
+    "locationId": "velun_upper_tunnel"
+  },
+  {
+    "id": "velun_cold_gear",
+    "name": "Insulated Cold Gear",
+    "enabledDescription": "The ice shelf won't kill you now.",
+    "disabledDescription": "Cracked seals.",
+    "dependsOn": null,
+    "locationId": "velun_fault_mouth"
+  },
+  {
+    "id": "velun_coolant_manifest",
+    "name": "Coolant System Manifest",
+    "enabledDescription": "Cross-references with Crael's refinery schematics. Someone was planning something.",
+    "disabledDescription": "Pressure-locked. Only released down here.",
+    "dependsOn": null,
+    "locationId": "velun_deep_bore"
   },
 
   {
     "id": "mireth_garrison_badge",
     "name": "Garrison ID Badge",
-    "enabledDescription": "A valid garrison ID. Doors with biometric readers might respond to this.",
-    "disabledDescription": "A garrison ID badge, but the chip is fried.",
+    "enabledDescription": "Chip intact. Biometric readers should accept it.",
+    "disabledDescription": "Fried authentication chip.",
     "dependsOn": null,
     "locationId": "mireth_desert_flats"
   },
   {
     "id": "mireth_chip_reader",
     "name": "Field Chip Reader",
-    "enabledDescription": "A chip reader that has restored the badge's authentication data.",
-    "disabledDescription": "A chip reader. It needs a badge to interface with.",
+    "enabledDescription": "Badge re-initialised. It'll pass a scanner.",
+    "disabledDescription": "No badge loaded.",
     "dependsOn": "mireth_garrison_badge",
     "locationId": "mireth_barracks"
   },
   {
     "id": "mireth_cache_keycard",
     "name": "Armoury Keycard",
-    "enabledDescription": "An authenticated armoury keycard. The weapons cache should open now.",
-    "disabledDescription": "An armoury keycard. The authentication handshake won't complete without the chip reader.",
+    "enabledDescription": "Authenticated. The weapons cache will cycle open.",
+    "disabledDescription": "Handshake fails without a chip reader.",
     "dependsOn": "mireth_chip_reader",
-    "locationId": "quell_flooded_corridor"
+    "locationId": "mireth_comms_tower"
   },
-
   {
-    "id": "quell_tide_schedule",
-    "name": "Printed Tide Schedule",
-    "enabledDescription": "An old tide schedule. The safe windows are highlighted by someone who knew.",
-    "disabledDescription": "A tide schedule, but the ink is badly water-damaged and unreadable.",
+    "id": "mireth_parade_orders",
+    "name": "Evacuation Orders",
+    "enabledDescription": "Final orders, counter-signed. The command block was left on manual release.",
+    "disabledDescription": "Slipped under the gate. Need command block access to retrieve it.",
     "dependsOn": null,
-    "locationId": "quell_dive_staging"
+    "locationId": "mireth_parade_ground"
   },
   {
-    "id": "quell_uv_lamp",
-    "name": "UV Lamp",
-    "enabledDescription": "A UV lamp that revealed the tide schedule's hidden annotations.",
-    "disabledDescription": "A UV lamp. It might help you read something damaged.",
-    "dependsOn": "quell_tide_schedule",
-    "locationId": "quell_instrument_bay"
-  },
-  {
-    "id": "quell_airlock_override",
-    "name": "Tidal Airlock Override",
-    "enabledDescription": "You know the safe window. The flooded corridor can be entered without drowning.",
-    "disabledDescription": "An airlock override switch. Using it blind would flood the corridor while you're inside.",
-    "dependsOn": "quell_uv_lamp",
-    "locationId": "velun_deep_bore"
-  },
-
-  {
-    "id": "harven_filter_mask",
-    "name": "Atmospheric Filter Mask",
-    "enabledDescription": "A working filter mask. The methane content won't affect you now.",
-    "disabledDescription": "A filter mask, but the canister is spent and needs replacing.",
+    "id": "mireth_hazard_suit",
+    "name": "Hazard Clearance Suit",
+    "enabledDescription": "Sealed and pressurised. Presso's flats won't touch you.",
+    "disabledDescription": "Locked in the weapons cache.",
     "dependsOn": null,
-    "locationId": "harven_residential_block"
-  },
-  {
-    "id": "harven_filter_canister",
-    "name": "Replacement Filter Canister",
-    "enabledDescription": "A fresh canister fitted into the mask. Ready to breathe.",
-    "disabledDescription": "A filter canister. It needs a mask to be useful.",
-    "dependsOn": "harven_filter_mask",
-    "locationId": "harven_filter_station"
-  },
-  {
-    "id": "harven_grid_access",
-    "name": "Grid Access Terminal Code",
-    "enabledDescription": "The terminal code for the central power grid. You can reach it now without the atmosphere killing you.",
-    "disabledDescription": "A terminal access code, but the power grid room vents raw methane. You need a working mask first.",
-    "dependsOn": "harven_filter_canister",
     "locationId": "mireth_weapons_cache"
   },
 
   {
-    "id": "orix_cipher_fragment",
-    "name": "Cipher Fragment",
-    "enabledDescription": "Half of a decryption key, salvaged from a researcher's personal drive.",
-    "disabledDescription": "A cipher fragment. Incomplete — it won't decrypt anything alone.",
+    "id": "crael_debris_cutter",
+    "name": "Hydraulic Debris Cutter",
+    "enabledDescription": "The ring debris blocking the outcrop can be cleared.",
+    "disabledDescription": "Dry hydraulic reservoir.",
     "dependsOn": null,
-    "locationId": "orix_observation_deck"
+    "locationId": "crael_surface_dock"
   },
-  {
-    "id": "orix_second_fragment",
-    "name": "Second Cipher Fragment",
-    "enabledDescription": "Both fragments combined form a full decryption key.",
-    "disabledDescription": "Another cipher fragment. You need the first piece before this is useful.",
-    "dependsOn": "orix_cipher_fragment",
-    "locationId": "orix_rocky_basin"
-  },
-  {
-    "id": "orix_decryption_key",
-    "name": "Decryption Key",
-    "enabledDescription": "A complete key assembled from both fragments. The server room's encrypted logs can now be read.",
-    "disabledDescription": "An incomplete decryption key. You're still missing a fragment.",
-    "dependsOn": "orix_second_fragment",
-    "locationId": "harven_power_grid"
-  },
-
-  {
-    "id": "calwen_survey_map",
-    "name": "Colonist Survey Map",
-    "enabledDescription": "A survey map with cache locations hand-marked. The western marker is circled.",
-    "disabledDescription": "A rolled-up survey map, water-stained and stuck shut.",
-    "dependsOn": null,
-    "locationId": "calwen_comms_relay"
-  },
-  {
-    "id": "calwen_cache_tool",
-    "name": "Cache Excavation Tool",
-    "enabledDescription": "A lightweight dig tool. You know where to use it.",
-    "disabledDescription": "An excavation tool. Without a map, you'd be digging blind.",
-    "dependsOn": "calwen_survey_map",
-    "locationId": "calwen_western_cache"
-  },
-  {
-    "id": "calwen_supply_crate",
-    "name": "Buried Supply Crate",
-    "enabledDescription": "A crate of colonist provisions, exactly where the map said. The supply depot has more context on what's inside.",
-    "disabledDescription": "You've found something buried, but you can't get it open without the excavation tool.",
-    "dependsOn": "calwen_cache_tool",
-    "locationId": "calwen_northern_cache"
-  },
-
-  {
-    "id": "thrake_heat_suit",
-    "name": "Thermal Protection Suit",
-    "enabledDescription": "A sealed heat suit rated for volcanic environments. The deeper facility is survivable now.",
-    "disabledDescription": "A heat suit with a cracked visor. Wearing it near the vents would be fatal.",
-    "dependsOn": null,
-    "locationId": "thrake_guard_post"
-  },
-  {
-    "id": "thrake_visor_seal",
-    "name": "Replacement Visor Seal",
-    "enabledDescription": "A visor seal fitted to the heat suit. The suit is now fully rated.",
-    "disabledDescription": "A visor seal. It needs a suit to be fitted to.",
-    "dependsOn": "thrake_heat_suit",
-    "locationId": "thrake_vent_field"
-  },
-  {
-    "id": "thrake_vault_override",
-    "name": "Vault Override Chip",
-    "enabledDescription": "A hardened override chip for the deep vault. The black site's lowest level is open.",
-    "disabledDescription": "An override chip for the vault. The thermal interference near the vents scrambles it — you need full suit protection to carry it in.",
-    "dependsOn": "thrake_visor_seal",
-    "locationId": "thrake_ops_centre"
-  },
-
   {
     "id": "crael_ping_decoder",
     "name": "Signal Decoder",
-    "enabledDescription": "A decoder tuned to the refinery's maintenance ping frequency.",
-    "disabledDescription": "A signal decoder, but it needs calibrating to the right frequency first.",
+    "enabledDescription": "Salvaged from the outcrop. Needs a frequency reference to lock on.",
+    "disabledDescription": "Blocked by debris.",
     "dependsOn": null,
     "locationId": "crael_ring_view"
   },
   {
-    "id": "crael_frequency_log",
-    "name": "Frequency Log",
-    "enabledDescription": "A frequency log recovered from the tether station. The decoder is now calibrated.",
-    "disabledDescription": "A frequency log. It's meaningless without a decoder to feed it into.",
+    "id": "crael_frequency_spool",
+    "name": "Frequency Spool",
+    "enabledDescription": "Decoder locked on. The refinery ping is readable.",
+    "disabledDescription": "No decoder to feed it into.",
     "dependsOn": "crael_ping_decoder",
     "locationId": "crael_orbital_tether"
   },
   {
+    "id": "crael_smelter_rod",
+    "name": "Smelter Access Rod",
+    "enabledDescription": "The coolant routing checks out. The lower bay gate will cycle.",
+    "disabledDescription": "Gate mechanism needs the coolant lines read first.",
+    "dependsOn": "velun_coolant_manifest",
+    "locationId": "crael_refinery_lower"
+  },
+  {
     "id": "crael_broadcast_access",
     "name": "Broadcast Room Access Code",
-    "enabledDescription": "You've isolated the ping source. The broadcast room door responds to the decoded signal.",
-    "disabledDescription": "An access code derived from the ping — but it only works once you've decoded the full signal.",
-    "dependsOn": "crael_frequency_log",
-    "locationId": "orix_server_room"
+    "enabledDescription": "Ping source isolated. The broadcast room door responds.",
+    "disabledDescription": "Needs the lower bay cleared first.",
+    "dependsOn": "crael_smelter_rod",
+    "locationId": "crael_refinery_upper"
   },
-
   {
-    "id": "akhemvar_thermal_lance",
-    "name": "Thermal Lance",
-    "enabledDescription": "A working thermal lance, capable of cutting through ice-sealed doors.",
-    "disabledDescription": "A thermal lance with a dead power cell.",
+    "id": "crael_transmission_fragment",
+    "name": "Transmission Fragment",
+    "enabledDescription": "A colonial distress transmission. The Presso rig's autonomous systems are keyed to this signal.",
+    "disabledDescription": "Terminal locked.",
     "dependsOn": null,
-    "locationId": "akhemvar_dome_airlock"
-  },
-  {
-    "id": "akhemvar_power_cell",
-    "name": "Charged Power Cell",
-    "enabledDescription": "A charged cell fitted to the thermal lance. It's ready to cut.",
-    "disabledDescription": "A power cell. It needs a lance to be installed in.",
-    "dependsOn": "akhemvar_thermal_lance",
-    "locationId": "akhemvar_residential_ring"
-  },
-  {
-    "id": "akhemvar_provisions_access",
-    "name": "Provisions Store — Melted Entry",
-    "enabledDescription": "The ice-sealed provisions store door has been cut open. The abandoned supplies inside are accessible.",
-    "disabledDescription": "The provisions store door is frozen solid. You need something that can cut through it.",
-    "dependsOn": "akhemvar_power_cell",
     "locationId": "crael_broadcast_room"
   },
 
   {
-    "id": "presso_rig_manual",
-    "name": "Rig Operations Manual",
-    "enabledDescription": "A manual detailing the autonomous cycle override procedure.",
-    "disabledDescription": "A rig operations manual, but the relevant section is torn out.",
+    "id": "presso_fuel_connector",
+    "name": "Fuel Line Connector",
+    "enabledDescription": "Pressure-rated. Fits the drill arm's fuel cutoff valve.",
+    "disabledDescription": "Nothing survives the flats without a rated suit.",
     "dependsOn": null,
-    "locationId": "presso_rig_exterior"
+    "locationId": "presso_corrosive_flats"
   },
   {
-    "id": "presso_missing_pages",
-    "name": "Torn Manual Pages",
-    "enabledDescription": "The missing pages reattached — the override procedure is now complete.",
-    "disabledDescription": "Torn pages from a manual. They need the rest of the document to make sense.",
-    "dependsOn": "presso_rig_manual",
-    "locationId": "calwen_supply_depot"
+    "id": "presso_shutoff_procedure",
+    "name": "Drill Arm Shutoff Procedure",
+    "enabledDescription": "Full autonomous cycle override. With the connector fitted, the arms can be stopped safely.",
+    "disabledDescription": "Shaft sealed — autonomous systems never received the shutdown signal.",
+    "dependsOn": null,
+    "locationId": "presso_maintenance_shaft"
   },
   {
     "id": "presso_drill_shutoff",
     "name": "Drill Arm Shutoff Code",
-    "enabledDescription": "The autonomous drill arm cycle has been halted. The drill bay is no longer dangerous to enter.",
-    "disabledDescription": "A shutoff code, but entering the drill bay to use it while the arms are cycling would be suicide. Read the manual first.",
-    "dependsOn": "presso_missing_pages",
-    "locationId": "presso_maintenance_shaft"
+    "enabledDescription": "Arms stopped. The drill bay is still.",
+    "disabledDescription": "Need the procedure and the connector first.",
+    "dependsOn": "presso_shutoff_procedure",
+    "locationId": "presso_fuel_storage"
   },
 
   {
     "id": "escape_ship",
-    "name": "Hyprdrive Evacuation Ship",
-    "enabledDescription": "A sealed colonial evacuation vessel, hyprdrive intact and fuelled. The Akhemvar colonists hid it here — an exit. You can leave the system.",
-    "disabledDescription": "A large sealed vessel behind the store's inner door. The hyperdrive housing is visible through the porthole but you can't reach it yet.",
+    "name": "Hyperdrive Evacuation Ship",
+    "enabledDescription": "Fuelled and intact. It was always meant to be found last. You can leave.",
+    "disabledDescription": "Arms still cycling. You won't survive getting close.",
     "dependsOn": null,
     "locationId": "presso_drill_arm_bay"
   }
