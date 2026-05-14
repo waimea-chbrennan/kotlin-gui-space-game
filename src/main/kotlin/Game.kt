@@ -13,6 +13,14 @@ enum class Direction {
     RIGHT,
 }
 
+enum class LateralDirection {
+    LEFT,
+    RIGHT
+}
+
+/**
+ * Stores modifies and provides ways to access game data.
+ */
 class Game {
     val planets = mutableListOf<Planet>()
     val items = mutableListOf<Item>()
@@ -94,19 +102,21 @@ class Game {
         locations.addAll(newLocations)
     }
 
-    fun travelPlanetRelative(direction: Direction) {
+    /**
+     * Travels left or right to the directed planet
+     *
+     * @param direction expects LEFT or RIGHT from LateralDirection
+     */
+    fun travelPlanetRelative(direction: LateralDirection) {
         //Handle Left and Right Cases, complex planet movement not implemented
         when (direction) {
-            Direction.LEFT -> {
+            LateralDirection.LEFT -> {
                 if (currentPlanetIndex + 1 !in planets.indices) return
                 currentPlanet = planets[currentPlanetIndex+1]
             }
-            Direction.RIGHT -> {
+            LateralDirection.RIGHT -> {
                 if (currentPlanetIndex - 1 !in planets.indices) return
                 currentPlanet = planets[currentPlanetIndex-1]
-            }
-            else -> {
-                error("Up and Down movement to Planets not implemented, please use Direction.LEFT and Direction.RIGHT")
             }
         }
         currentLocation = locations.find { it.id == currentPlanet.startLocationId }!!

@@ -179,8 +179,8 @@ class MainWindow(val game: Game) {
     }
 
     private fun setupActions() {
-        nextPlanetButton.addActionListener { handlePlanetClick(Direction.LEFT) }
-        previousPlanetButton.addActionListener { handlePlanetClick(Direction.RIGHT) }
+        nextPlanetButton.addActionListener { handlePlanetClick(LateralDirection.LEFT) }
+        previousPlanetButton.addActionListener { handlePlanetClick(LateralDirection.RIGHT) }
 
         itemPickupButton.addActionListener { handlePickupItem() }
 
