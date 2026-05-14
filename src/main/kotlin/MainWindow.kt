@@ -70,6 +70,13 @@ class MainWindow(val game: Game) {
     val introWindow = IntroWindow(this)
 
 
+    private val gameCountdownTimer = Timer(1000, null)
+
+    private val currentTimeLabel = JLabel("")
+
+
+
+
 
 
 
@@ -190,7 +197,20 @@ class MainWindow(val game: Game) {
         southButton.addActionListener { handleLocationClick(Direction.DOWN) }
     }
 
-    private fun handlePlanetClick(direction: Direction) {
+
+    private fun handleGameTimerTick() {
+        game.currentTime--
+        updateUI()
+        if (game.currentTime == 0) { // Game lose condition
+            gameCountdownTimer.stop()
+            frame.isVisible = false
+            val loseWindow = LoseWindow()
+            loseWindow.show()
+
+        }
+    }
+
+    private fun handlePlanetClick(direction: LateralDirection) {
         game.travelPlanetRelative(direction)
         updateUI()
     }
@@ -203,6 +223,14 @@ class MainWindow(val game: Game) {
     private fun handlePickupItem() {
         game.pickupItem()
         updateUI()
+        //Check Win State!
+        if(inventory.find{ it.id==WINNING_ITEM_ID }!=null) {
+            gameCountdownTimer.stop()
+            frame.isVisible = false
+            val winWindow = WinWindow()
+            winWindow.show()
+
+        }
     }
 
 
