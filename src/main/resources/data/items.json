@@ -251,8 +251,8 @@
 
   {
     "id": "escape_ship",
-    "name": "Colonial Evacuation Ship",
-    "enabledDescription": "A sealed colonial evacuation vessel, hyperdrive intact and fuelled. The Akhemvar colonists hid it here — not provisions, an exit. You can leave the system.",
+    "name": "Hyprdrive Evacuation Ship",
+    "enabledDescription": "A sealed colonial evacuation vessel, hyprdrive intact and fuelled. The Akhemvar colonists hid it here — an exit. You can leave the system.",
     "disabledDescription": "A large sealed vessel behind the store's inner door. The hyperdrive housing is visible through the porthole but you can't reach it yet.",
     "dependsOn": null,
     "locationId": "presso_drill_arm_bay"

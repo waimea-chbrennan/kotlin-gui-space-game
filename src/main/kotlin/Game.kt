@@ -3,7 +3,7 @@ import com.google.gson.Gson
 import jdk.jfr.Enabled
 import kotlin.math.absoluteValue
 
-const val dataDir = "data/"
+const val DATA_DIR = "data/"
 
 val inventory = mutableListOf<Item>()
 enum class Direction {
@@ -67,23 +67,30 @@ class Game {
 
     }
     fun loadPlanets() {
-        val file = File(dataDir + "planets.json")
-        if (!file.exists()) error("Planets data is needed to run the game")
-        val newPlanets = Gson().fromJson(file.readText(), Array<Planet>::class.java)
+        val stream = ClassLoader.getSystemResourceAsStream(DATA_DIR + "planets.json")
+        val content: String? = stream?.bufferedReader()?.readText()
+
+        if (content.isNullOrEmpty()) error("Planets data is needed to run the game")
+        val newPlanets = Gson().fromJson(content, Array<Planet>::class.java)
         planets.addAll(newPlanets)
 
     }
     fun loadItems() {
-        val file = File(dataDir + "items.json")
-        if (!file.exists()) error("Item data is needed to run the game")
-        val newItems = Gson().fromJson(file.readText(), Array<Item>::class.java)
+        val stream = ClassLoader.getSystemResourceAsStream(DATA_DIR + "items.json")
+        val content: String? = stream?.bufferedReader()?.readText()
+        if (content.isNullOrEmpty()) error("Items data is needed to run the game")
+        val newItems = Gson().fromJson(content, Array<Item>::class.java)
         items.addAll(newItems)
+
+        if(items.find{it.id==WINNING_ITEM_ID}==null) error("Invalid or no winning item, game is not winnable")
     }
 
     fun loadLocations() {
-        val file = File(dataDir + "locations.json")
-        if (!file.exists()) error("Location data is needed to run the game")
-        val newLocations = Gson().fromJson(file.readText(), Array<LocationNode>::class.java)
+        val stream = ClassLoader.getSystemResourceAsStream(DATA_DIR + "locations.json")
+        val content: String? = stream?.bufferedReader()?.readText()
+        if (content.isNullOrEmpty()) error("Locations data is needed to run the game")
+        val newLocations = Gson().fromJson(content, Array<LocationNode>::class.java)
+
         locations.addAll(newLocations)
     }
 
