@@ -1,7 +1,4 @@
-import java.io.File
 import com.google.gson.Gson
-import jdk.jfr.Enabled
-import kotlin.math.absoluteValue
 
 const val DATA_DIR = "data/"
 
@@ -67,21 +64,25 @@ class Game {
         loadPlanets()
         loadItems()
         loadLocations()
+        validateGameData()
 
-        currentPlanet = planets.random()
-        currentLocation = locations.find { it.id == currentPlanet.startLocationId } ?: error("Planet or location Data appears to be corrupted.")
-        println(currentLocation.northId)
-        println(currentLocation.eastId)
-        println(currentLocation.southId)
-        println(currentLocation.westId)
+        currentPlanet = planets[0]
+        //Init with location of start planet, if none then data is corrupt
+        currentLocation = locations.find { it.id == currentPlanet.startLocationId }!!
 
     }
-    fun loadPlanets() {
-        val stream = ClassLoader.getSystemResourceAsStream(DATA_DIR + "planets.json")
-        val content: String? = stream?.bufferedReader()?.readText()
 
-        if (content.isNullOrEmpty()) error("Planets data is needed to run the game")
-        val newPlanets = Gson().fromJson(content, Array<Planet>::class.java)
+    /**
+     * gets planet data from bundled JSON rather than use stupid amounts of inline object declaration.
+     *
+     * Does basic checking of data integrity but nothing for validity
+     */
+    fun loadPlanets() {
+        val stream = ClassLoader.getSystemResourceAsStream(DATA_DIR + "planets.json") //finds and gets filestream, can't hardcode due to jar bundling
+        val content: String? = stream?.bufferedReader()?.readText() //convert filestream to string
+        if (content.isNullOrEmpty()) error("Planets data is needed to run the game") //exit if no data, no planets will be no fun in this game
+        val newPlanets = Gson().fromJson(content, Array<Planet>::class.java) //Cast string to list of planets
+        if(newPlanets.isEmpty()) error("Planets data does not contain any planets") //There should always be at lright one planet
         planets.addAll(newPlanets)
 
     }
@@ -113,6 +114,44 @@ class Game {
         if(newLocations.isEmpty()) error("Locations data does not contain any locations")
         locations.addAll(newLocations)
     }
+
+    /**
+     * Perform linked checks between planets, locations and items to make sure our data actually gives us a valid and playable map
+     */
+    fun validateGameData() {
+        //Each planet needs to point at a valid LocationNode to start
+        planets.forEach { planet ->
+            if (locations.find { it.id == planet.startLocationId } == null) error("Planet: ${planet.name} does not have a valid startLocation: ${planet.startLocationId}")
+        }
+
+        locations.forEach { location ->
+            //Check that each location that is refrenced exists, and points back to the proper location
+            //Iterate using lambda getters allowing to pass inverse direction into loop
+            listOf(
+                { location: LocationNode -> location.upId } to { location: LocationNode -> location.downId },
+                { location: LocationNode -> location.rightId } to { location: LocationNode -> location.leftId },
+                { location: LocationNode -> location.downId } to { location: LocationNode -> location.upId },
+                { location: LocationNode -> location.leftId } to { location: LocationNode -> location.rightId },
+            ).forEach { (getDirectionId, getInverseDirectionId) -> //directionId used as any of {upId, rightId, downId, leftId}
+                //okay to have an empty directionId as this is a 'wall'
+                if (getDirectionId(location).isEmpty()) return@forEach
+
+                //If direction not empty, then check if the referenced directionId exists.
+                val referencedLocation: LocationNode = locations.find { it.id == getDirectionId(location) } ?: error("DirectionId: ${getDirectionId(location)} from Location: ${location.id} is not a valid location.")
+
+                //the referenced location should also point back at original location, in opposite way
+                if (getInverseDirectionId(referencedLocation) != location.id) error("Location ${location.id} references ${referencedLocation.id}, but is not refrenced back.")
+            }
+        }
+    }
+
+
+
+
+
+
+
+
 
     /**
      * Travels left or right to the directed planet
@@ -182,6 +221,7 @@ class LocationNode (
      */
     fun isLocked(): Boolean {
         if (lockedByItemId.isEmpty()) return false
+        //find if locked item is in inventory and enabled
         return inventory.find {it.id == lockedByItemId && it.enabled}==null
     }
 
