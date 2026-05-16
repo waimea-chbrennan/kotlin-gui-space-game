@@ -272,7 +272,7 @@ class MainWindow(val game: Game) {
 
         if(game.currentPlanet.imageFile!=null) {
             currentPlanetImageLabel.isVisible = true
-            currentPlanetNameLabel.icon = ImageIcon(ClassLoader.getSystemResource(game.currentPlanet.imageFile)).scaled(220,220)
+            currentPlanetImageLabel.icon = ImageIcon(ClassLoader.getSystemResource(game.currentPlanet.imageFile)).scaled(480,480)
         } else {
             currentPlanetImageLabel.isVisible = false
         }
