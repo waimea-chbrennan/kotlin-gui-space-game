@@ -3,291 +3,291 @@
     "id": "velun_surface_rift",
     "name": "Surface Rift — Warm Side",
     "lockedByItemId": "",
-    "northId": "velun_fault_mouth",
-    "eastId": "velun_ice_shelf",
-    "southId": "",
-    "westId": ""
+    "upId": "velun_fault_mouth",
+    "rightId": "velun_ice_shelf",
+    "downId": "",
+    "leftId": ""
   },
   {
     "id": "velun_fault_mouth",
     "name": "Fault Line Mouth",
     "lockedByItemId": "",
-    "northId": "velun_upper_tunnel",
-    "eastId": "",
-    "southId": "velun_surface_rift",
-    "westId": "velun_equipment_yard"
+    "upId": "velun_upper_tunnel",
+    "rightId": "",
+    "downId": "velun_surface_rift",
+    "leftId": "velun_equipment_yard"
   },
   {
     "id": "velun_ice_shelf",
     "name": "Cracked Ice Shelf",
     "lockedByItemId": "velun_cold_gear",
-    "northId": "",
-    "eastId": "",
-    "southId": "",
-    "westId": "velun_surface_rift"
+    "upId": "",
+    "rightId": "",
+    "downId": "",
+    "leftId": "velun_surface_rift"
   },
   {
     "id": "velun_equipment_yard",
     "name": "Surface Equipment Yard",
     "lockedByItemId": "",
-    "northId": "",
-    "eastId": "velun_fault_mouth",
-    "southId": "",
-    "westId": ""
+    "upId": "",
+    "rightId": "velun_fault_mouth",
+    "downId": "",
+    "leftId": ""
   },
   {
     "id": "velun_upper_tunnel",
     "name": "Upper Pressurised Tunnel",
     "lockedByItemId": "",
-    "northId": "velun_drill_chamber",
-    "eastId": "",
-    "southId": "velun_fault_mouth",
-    "westId": ""
+    "upId": "velun_drill_chamber",
+    "rightId": "",
+    "downId": "velun_fault_mouth",
+    "leftId": ""
   },
   {
     "id": "velun_drill_chamber",
     "name": "Drill Chamber — Level 3",
     "lockedByItemId": "",
-    "northId": "velun_deep_bore",
-    "eastId": "velun_crew_quarters",
-    "southId": "velun_upper_tunnel",
-    "westId": ""
+    "upId": "velun_deep_bore",
+    "rightId": "velun_crew_quarters",
+    "downId": "velun_upper_tunnel",
+    "leftId": ""
   },
   {
     "id": "velun_crew_quarters",
     "name": "Abandoned Crew Quarters",
     "lockedByItemId": "",
-    "northId": "",
-    "eastId": "",
-    "southId": "",
-    "westId": "velun_drill_chamber"
+    "upId": "",
+    "rightId": "",
+    "downId": "",
+    "leftId": "velun_drill_chamber"
   },
   {
     "id": "velun_deep_bore",
     "name": "Deep Bore — Terminus",
     "lockedByItemId": "velun_safety_gear",
-    "northId": "",
-    "eastId": "",
-    "southId": "velun_drill_chamber",
-    "westId": ""
+    "upId": "",
+    "rightId": "",
+    "downId": "velun_drill_chamber",
+    "leftId": ""
   },
 
   {
     "id": "mireth_garrison_gate",
     "name": "Garrison Perimeter Gate",
     "lockedByItemId": "",
-    "northId": "mireth_parade_ground",
-    "eastId": "mireth_desert_flats",
-    "southId": "",
-    "westId": ""
+    "upId": "mireth_parade_ground",
+    "rightId": "mireth_desert_flats",
+    "downId": "",
+    "leftId": ""
   },
   {
     "id": "mireth_desert_flats",
     "name": "Baked Desert Flats",
     "lockedByItemId": "",
-    "northId": "",
-    "eastId": "",
-    "southId": "",
-    "westId": "mireth_garrison_gate"
+    "upId": "",
+    "rightId": "",
+    "downId": "",
+    "leftId": "mireth_garrison_gate"
   },
   {
     "id": "mireth_parade_ground",
     "name": "Garrison Parade Ground",
     "lockedByItemId": "",
-    "northId": "mireth_barracks",
-    "eastId": "mireth_command_block",
-    "southId": "mireth_garrison_gate",
-    "westId": ""
+    "upId": "mireth_barracks",
+    "rightId": "mireth_command_block",
+    "downId": "mireth_garrison_gate",
+    "leftId": ""
   },
   {
     "id": "mireth_barracks",
     "name": "Evacuated Barracks",
     "lockedByItemId": "",
-    "northId": "",
-    "eastId": "",
-    "southId": "mireth_parade_ground",
-    "westId": ""
+    "upId": "",
+    "rightId": "",
+    "downId": "mireth_parade_ground",
+    "leftId": ""
   },
   {
     "id": "mireth_command_block",
     "name": "Command Block",
     "lockedByItemId": "mireth_parade_orders",
-    "northId": "mireth_comms_tower",
-    "eastId": "",
-    "southId": "",
-    "westId": "mireth_parade_ground"
+    "upId": "mireth_comms_tower",
+    "rightId": "",
+    "downId": "",
+    "leftId": "mireth_parade_ground"
   },
   {
     "id": "mireth_comms_tower",
     "name": "Communications Tower",
     "lockedByItemId": "",
-    "northId": "",
-    "eastId": "",
-    "southId": "mireth_command_block",
-    "westId": "mireth_armoury_corridor"
+    "upId": "",
+    "rightId": "",
+    "downId": "mireth_command_block",
+    "leftId": "mireth_armoury_corridor"
   },
   {
     "id": "mireth_armoury_corridor",
     "name": "Armoury Corridor",
     "lockedByItemId": "",
-    "northId": "mireth_weapons_cache",
-    "eastId": "mireth_comms_tower",
-    "southId": "",
-    "westId": ""
+    "upId": "mireth_weapons_cache",
+    "rightId": "mireth_comms_tower",
+    "downId": "",
+    "leftId": ""
   },
   {
     "id": "mireth_weapons_cache",
     "name": "Sealed Weapons Cache",
     "lockedByItemId": "mireth_cache_keycard",
-    "northId": "",
-    "eastId": "",
-    "southId": "mireth_armoury_corridor",
-    "westId": ""
+    "upId": "",
+    "rightId": "",
+    "downId": "mireth_armoury_corridor",
+    "leftId": ""
   },
 
   {
     "id": "crael_ring_approach",
     "name": "Ring Approach — Debris Field",
     "lockedByItemId": "",
-    "northId": "crael_surface_dock",
-    "eastId": "",
-    "southId": "",
-    "westId": ""
+    "upId": "crael_surface_dock",
+    "rightId": "",
+    "downId": "",
+    "leftId": ""
   },
   {
     "id": "crael_surface_dock",
     "name": "Surface Docking Platform",
     "lockedByItemId": "",
-    "northId": "crael_processing_hub",
-    "eastId": "crael_ring_view",
-    "southId": "crael_ring_approach",
-    "westId": ""
+    "upId": "crael_processing_hub",
+    "rightId": "crael_ring_view",
+    "downId": "crael_ring_approach",
+    "leftId": ""
   },
   {
     "id": "crael_ring_view",
     "name": "Ring Observation Outcrop",
     "lockedByItemId": "crael_debris_cutter",
-    "northId": "",
-    "eastId": "",
-    "southId": "",
-    "westId": "crael_surface_dock"
+    "upId": "",
+    "rightId": "",
+    "downId": "",
+    "leftId": "crael_surface_dock"
   },
   {
     "id": "crael_processing_hub",
     "name": "Ore Processing Hub",
     "lockedByItemId": "",
-    "northId": "crael_orbital_tether",
-    "eastId": "",
-    "southId": "crael_surface_dock",
-    "westId": ""
+    "upId": "crael_orbital_tether",
+    "rightId": "",
+    "downId": "crael_surface_dock",
+    "leftId": ""
   },
   {
     "id": "crael_orbital_tether",
     "name": "Orbital Tether Station",
     "lockedByItemId": "",
-    "northId": "crael_refinery_upper",
-    "eastId": "",
-    "southId": "crael_processing_hub",
-    "westId": ""
+    "upId": "crael_refinery_upper",
+    "rightId": "",
+    "downId": "crael_processing_hub",
+    "leftId": ""
   },
   {
     "id": "crael_refinery_upper",
     "name": "Decaying Refinery — Upper Level",
     "lockedByItemId": "",
-    "northId": "",
-    "eastId": "crael_broadcast_room",
-    "southId": "crael_orbital_tether",
-    "westId": "crael_refinery_lower"
+    "upId": "",
+    "rightId": "crael_broadcast_room",
+    "downId": "crael_orbital_tether",
+    "leftId": "crael_refinery_lower"
   },
   {
     "id": "crael_refinery_lower",
     "name": "Refinery — Lower Smelting Bay",
     "lockedByItemId": "crael_frequency_spool",
-    "northId": "",
-    "eastId": "crael_refinery_upper",
-    "southId": "",
-    "westId": ""
+    "upId": "",
+    "rightId": "crael_refinery_upper",
+    "downId": "",
+    "leftId": ""
   },
   {
     "id": "crael_broadcast_room",
     "name": "Maintenance Ping Broadcast Room",
     "lockedByItemId": "crael_broadcast_access",
-    "northId": "",
-    "eastId": "",
-    "southId": "",
-    "westId": "crael_refinery_upper"
+    "upId": "",
+    "rightId": "",
+    "downId": "",
+    "leftId": "crael_refinery_upper"
   },
 
   {
     "id": "presso_descent_pad",
     "name": "Armoured Descent Pad",
     "lockedByItemId": "",
-    "northId": "presso_rig_exterior",
-    "eastId": "",
-    "southId": "",
-    "westId": ""
+    "upId": "presso_rig_exterior",
+    "rightId": "",
+    "downId": "",
+    "leftId": ""
   },
   {
     "id": "presso_rig_exterior",
     "name": "Mining Rig — Exterior Shell",
     "lockedByItemId": "",
-    "northId": "presso_rig_airlock",
-    "eastId": "presso_corrosive_flats",
-    "southId": "presso_descent_pad",
-    "westId": ""
+    "upId": "presso_rig_airlock",
+    "rightId": "presso_corrosive_flats",
+    "downId": "presso_descent_pad",
+    "leftId": ""
   },
   {
     "id": "presso_corrosive_flats",
     "name": "Corrosive Flats — Needle Rain",
     "lockedByItemId": "mireth_hazard_suit",
-    "northId": "",
-    "eastId": "",
-    "southId": "",
-    "westId": "presso_rig_exterior"
+    "upId": "",
+    "rightId": "",
+    "downId": "",
+    "leftId": "presso_rig_exterior"
   },
   {
     "id": "presso_rig_airlock",
     "name": "Rig Airlock — Pressurised",
     "lockedByItemId": "",
-    "northId": "presso_control_deck",
-    "eastId": "",
-    "southId": "presso_rig_exterior",
-    "westId": ""
+    "upId": "presso_control_deck",
+    "rightId": "",
+    "downId": "presso_rig_exterior",
+    "leftId": ""
   },
   {
     "id": "presso_control_deck",
     "name": "Autonomous Control Deck",
     "lockedByItemId": "",
-    "northId": "",
-    "eastId": "presso_drill_arm_bay",
-    "southId": "presso_rig_airlock",
-    "westId": "presso_fuel_storage"
+    "upId": "",
+    "rightId": "presso_drill_arm_bay",
+    "downId": "presso_rig_airlock",
+    "leftId": "presso_fuel_storage"
   },
   {
     "id": "presso_drill_arm_bay",
     "name": "Drill Arm Bay — Still Cycling",
     "lockedByItemId": "presso_drill_shutoff",
-    "northId": "",
-    "eastId": "",
-    "southId": "",
-    "westId": "presso_control_deck"
+    "upId": "",
+    "rightId": "",
+    "downId": "",
+    "leftId": "presso_control_deck"
   },
   {
     "id": "presso_fuel_storage",
     "name": "Fuel Storage — Pressurised Tank",
     "lockedByItemId": "",
-    "northId": "presso_maintenance_shaft",
-    "eastId": "presso_control_deck",
-    "southId": "",
-    "westId": ""
+    "upId": "presso_maintenance_shaft",
+    "rightId": "presso_control_deck",
+    "downId": "",
+    "leftId": ""
   },
   {
     "id": "presso_maintenance_shaft",
     "name": "Maintenance Shaft — Deep Level",
     "lockedByItemId": "crael_transmission_fragment",
-    "northId": "",
-    "eastId": "",
-    "southId": "presso_fuel_storage",
-    "westId": ""
+    "upId": "",
+    "rightId": "",
+    "downId": "presso_fuel_storage",
+    "leftId": ""
   }
 ]

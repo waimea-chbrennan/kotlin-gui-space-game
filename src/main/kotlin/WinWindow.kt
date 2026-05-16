@@ -38,21 +38,31 @@ class WinWindow() {
         setupWindow()
     }
 
+    /**
+     * Adds elements to the window at correct positioning with correct size
+     */
     fun setupLayout() {
         frame.preferredSize = java.awt.Dimension(1280, 720)
-
         frame.add(panel)
+
         val gbc = GridBagConstraints().apply {}
+        //Paragraph below title
         panel.add(winMessageLabel, gbc)
         gbc.gridy = 1
         panel.add(winMessageParagraphLabel, gbc)
     }
 
+    /**
+     * Sets color, font and any other non-layout styling of elements
+     */
     fun setupStyles() {
         winMessageLabel.font = Font(Font.MONOSPACED, Font.PLAIN, 46)
         winMessageParagraphLabel.font = Font(Font.MONOSPACED, Font.PLAIN, 14)
     }
 
+    /**
+     * Sets window parameters
+     */
     fun setupWindow() {
         frame.isResizable = false
         frame.defaultCloseOperation = JFrame.EXIT_ON_CLOSE
@@ -61,6 +71,9 @@ class WinWindow() {
         frame.setLocationRelativeTo(null)
     }
 
+    /**
+     * Shows the initialized window
+     */
     fun show() {
         frame.isVisible = true
     }

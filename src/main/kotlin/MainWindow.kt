@@ -1,3 +1,18 @@
+/**
+ * =====================================================================
+ * Programming Project for NCEA Level 3, Standard 91906
+ * ---------------------------------------------------------------------
+ * Project Name:   kotlin-gui-space-game
+ * Project Author: Connor Brennan
+ * GitHub Repo: https://github.com/waimea-chbrennan/kotlin-gui-space-game
+ * ---------------------------------------------------------------------
+ * Notes:
+ * Can you escape the solar system before the sun explodes?
+ * =====================================================================
+ */
+
+
+import java.awt.BorderLayout
 import java.awt.FlowLayout
 import java.awt.Font
 import java.awt.GridBagConstraints

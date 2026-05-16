@@ -6,14 +6,14 @@ import kotlin.math.absoluteValue
 const val DATA_DIR = "data/"
 
 val inventory = mutableListOf<Item>()
-enum class Direction {
+enum class Direction { //Cardinal directions are the valid moves for LocationNode travel
     UP,
     DOWN,
     LEFT,
     RIGHT,
 }
 
-enum class LateralDirection {
+enum class LateralDirection { //Lateral directions are for moving back and forth between planets
     LEFT,
     RIGHT
 }
@@ -27,6 +27,8 @@ class Game {
 
     val locations = mutableListOf<LocationNode>()
     var currentPlanet: Planet
+
+    var currentTime = COUNTDOWN_TIME_SECONDS
 
 
 
@@ -43,16 +45,16 @@ class Game {
 
 
     val locationNorth: LocationNode?
-        get() = locations.find { it.id == currentLocation.northId }
+        get() = locations.find { it.id == currentLocation.upId }
 
     val locationEast: LocationNode?
-        get() = locations.find { it.id == currentLocation.eastId }
+        get() = locations.find { it.id == currentLocation.rightId }
 
     val locationSouth: LocationNode?
-        get() = locations.find { it.id == currentLocation.southId }
+        get() = locations.find { it.id == currentLocation.downId }
 
     val locationWest: LocationNode?
-        get() = locations.find { it.id == currentLocation.westId }
+        get() = locations.find { it.id == currentLocation.leftId }
 
 
     val locationItem: Item?
@@ -83,32 +85,42 @@ class Game {
         planets.addAll(newPlanets)
 
     }
+
+    /**
+     * Reads items from JSON into list of objects.
+     * @see loadPlanets
+     */
     fun loadItems() {
         val stream = ClassLoader.getSystemResourceAsStream(DATA_DIR + "items.json")
         val content: String? = stream?.bufferedReader()?.readText()
         if (content.isNullOrEmpty()) error("Items data is needed to run the game")
         val newItems = Gson().fromJson(content, Array<Item>::class.java)
+        if(newItems.isEmpty()) error("Items data does not appear to have any items")
         items.addAll(newItems)
 
-        if(items.find{it.id==WINNING_ITEM_ID}==null) error("Invalid or no winning item, game is not winnable")
+        if(items.find{it.id==WINNING_ITEM_ID}==null) error("Invalid or no winning item, game is not winnable") //No win state is no fun for player: exit
     }
 
+    /**
+     * Reads locations from JSON into list of locations.
+     * @see loadPlanets
+     */
     fun loadLocations() {
         val stream = ClassLoader.getSystemResourceAsStream(DATA_DIR + "locations.json")
         val content: String? = stream?.bufferedReader()?.readText()
         if (content.isNullOrEmpty()) error("Locations data is needed to run the game")
         val newLocations = Gson().fromJson(content, Array<LocationNode>::class.java)
-
+        if(newLocations.isEmpty()) error("Locations data does not contain any locations")
         locations.addAll(newLocations)
     }
 
     /**
      * Travels left or right to the directed planet
      *
-     * @param direction expects LEFT or RIGHT from LateralDirection
+     * @param direction LEFT or RIGHT from LateralDirection
      */
     fun travelPlanetRelative(direction: LateralDirection) {
-        //Handle Left and Right Cases, complex planet movement not implemented
+        //Safe to handle only left and right cases
         when (direction) {
             LateralDirection.LEFT -> {
                 if (currentPlanetIndex + 1 !in planets.indices) return
@@ -122,6 +134,10 @@ class Game {
         currentLocation = locations.find { it.id == currentPlanet.startLocationId }!!
     }
 
+    /**
+     * Moves on-planet currentLocation to the specified direction.
+     * @param direction as Direction enum cardinal direction
+     */
     fun travelLocation(direction: Direction) { //TODO: reliable checking
         currentLocation = when (direction) {
             Direction.UP -> {locationNorth!!}
@@ -131,29 +147,39 @@ class Game {
         }
     }
 
+    /**
+     * Moves an item that may be contained in current location to our inventory.
+     */
     fun pickupItem() {
         if(locationItem==null) return
         inventory.add(locationItem!!)
-        items.remove(locationItem)
-        println("DEBUG: INVENTORY=${inventory.size}")
+        items.remove(locationItem) //Don't want to pick up same item multiple times
     }
 
 
 }
 
 /**
- * Location stores the possible cardinal moves and whether it can be moved to.
+ * Locations are child of planet and store the possible cardinal moves and whether it can be moved to.
  */
 class LocationNode (
     val id: String,
     val name: String,
     val lockedByItemId: String,
-    val northId: String,
-    val eastId: String,
-    val southId: String,
-    val westId: String,
+    val upId: String,
+    val rightId: String,
+    val downId: String,
+    val leftId: String,
 
 ) {
+    /**
+     * Calculates whether the location is can be travelled to based on inventory
+     *
+     * Checks for a specific item needed to progress AND if this is item is enabled, which can only happen if
+     * all the items that it depends on are also enabled.
+     *
+     * @return true if locked, player cannot travel here. false if unlocked, is a valid move
+     */
     fun isLocked(): Boolean {
         if (lockedByItemId.isEmpty()) return false
         return inventory.find {it.id == lockedByItemId && it.enabled}==null
@@ -163,15 +189,14 @@ class LocationNode (
 }
 
 /**
- *  Planet is the highest level class, needs a specific LodationNode to travel to when user goes to planet.
+ *  Planet provides a collection of locations to travel between, referenced by startLocationId
  */
 class Planet(
     val name: String,
     val description: String,
     val startLocationId: String,
     val imageFile: String?
-    ) {
-}
+)
 
 /**
  * Items reference a location until picked up and recursively check whether they can be enabled.
@@ -184,11 +209,11 @@ class Item (
     val dependsOn: String?,
     val locationId: String,
 ) {
-    var enabled: Boolean = false
-        //Enabled if all dependencies are enabled
+    val enabled: Boolean
+        //Enabled if all item dependencies are enabled
         get() = dependsOn == null || inventory.find { it.id == dependsOn && it.enabled }!=null
 
-    fun getDescription(): String {
+    fun getDescription(): String { //Used to get the correct description rather than checking in the UI
         return if (enabled) {enabledDescription} else {disabledDescription}
     }
 

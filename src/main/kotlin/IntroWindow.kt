@@ -1,31 +1,46 @@
+/**
+ * =====================================================================
+ * Programming Project for NCEA Level 3, Standard 91906
+ * ---------------------------------------------------------------------
+ * Project Name:   kotlin-gui-space-game
+ * Project Author: Connor Brennan
+ * GitHub Repo: https://github.com/waimea-chbrennan/kotlin-gui-space-game
+ * ---------------------------------------------------------------------
+ * Notes:
+ * Can you escape the solar system before the sun explodes?
+ * =====================================================================
+ */
+
+
+
 import java.awt.Font
 import java.awt.GridBagConstraints
 import java.awt.GridBagLayout
 import java.awt.Insets
-import javax.imageio.ImageIO
 import javax.swing.ImageIcon
 import javax.swing.JButton
-import javax.swing.JDialog
 import javax.swing.JFrame
 import javax.swing.JLabel
-import javax.swing.JLayer
 import javax.swing.JLayeredPane
 import javax.swing.JPanel
-import javax.swing.OverlayLayout
 import javax.swing.SwingConstants
 import javax.swing.Timer
 
+/**
+ * Window shown first with instructions and lore
+ *
+ * @param owner the MainWindow object to be able to show it.
+ */
 class IntroWindow(val owner: MainWindow) {
 
-    private val characterTypingDelayTimer = Timer(20, null)
+    private val characterTypingDelayTimer = Timer(1, null)
     val frame  = JFrame("Welcome to Space Game")
-
-    private val panel = JPanel().apply { layout = GridBagLayout() }
 
     private val titleWelcomeLabel = JLabel("Welcome to Space Game")
 
-    private val instructionParagraphLabel = JLabel("", SwingConstants.CENTER)
-    private var instructionParagraphLabelText = "<html><div style='text-align: center;'>You are a space person with a space ship stuck in the Quases system with an unstable star. <br>Can you navigate the evacuated system and collect what you need to stabilize the star? <br>You have 5 minutes. <br>They are relying on you. <br>Good Luck."
+    private val animationParagraphLabel = JLabel("", SwingConstants.CENTER)
+
+    private var fullAnimationParagraphText = INTRO_LORE_PARAGRAPH
 
     private val proceedButton = JButton("Proceed")
 
@@ -57,7 +72,7 @@ class IntroWindow(val owner: MainWindow) {
 
         foregroundPanel.add(titleWelcomeLabel, gbc)
         gbc.gridy = 1
-        foregroundPanel.add(instructionParagraphLabel, gbc)
+        foregroundPanel.add(animationParagraphLabel, gbc)
         gbc.gridy = 2
         foregroundPanel.add(proceedButton, gbc)
 
@@ -72,20 +87,17 @@ class IntroWindow(val owner: MainWindow) {
 
     private fun setupStyles() {
         titleWelcomeLabel.font = Font(Font.MONOSPACED, Font.ITALIC, 30)
-        instructionParagraphLabel.font = Font(Font.MONOSPACED, Font.PLAIN, 14)
+        animationParagraphLabel.font = Font(Font.MONOSPACED, Font.PLAIN, 14)
         proceedButton.font = Font(java.awt.Font.MONOSPACED, Font.PLAIN, 15)
 
     }
 
     private fun setupActions() {
-        characterTypingDelayTimer.addActionListener { handleAddIntroCharacter() }
+        characterTypingDelayTimer.addActionListener { updateUI() } //Reveal a new character periodically for text animation
         proceedButton.addActionListener { handleProceedClick() }
 
     }
 
-    private fun handleAddIntroCharacter() {
-        updateUI()
-    }
     private fun setupWindow() {
         characterTypingDelayTimer.start()
         frame.isResizable = false
@@ -94,13 +106,19 @@ class IntroWindow(val owner: MainWindow) {
         frame.setLocationRelativeTo(null)
     }
 
+    /**
+     * Replace animated paragraph and button with second set of information.
+     */
     private fun handleProceedClick() {
-        instructionParagraphLabel.text = ""
-        instructionParagraphLabelText = "<html><div style='text-align: center;'>How To Play: <br>Travelling between planets will allow you to discover a new set of locations. <br>Some of these locations will be locked and require you to get items from other locations to unlock them. <br>Find a ship with a hyperdrive to escape the system."
+        animationParagraphLabel.text = ""
+        fullAnimationParagraphText = INTRO_INSTRUCTION_PARAGRAPH
         proceedButton.text = "Start"
         proceedButton.addActionListener { handleStartClick()}
     }
 
+    /**
+     * Closes IntroWindow and shows the MainWindow
+     */
     private fun handleStartClick() {
         frame.isVisible = false
         owner.show()
@@ -108,10 +126,16 @@ class IntroWindow(val owner: MainWindow) {
     }
 
     private fun updateUI() {
-        instructionParagraphLabel.text = instructionParagraphLabelText.take(instructionParagraphLabel.text.length+1)
-        proceedButton.isVisible = instructionParagraphLabel.text == instructionParagraphLabelText
+        //Add one character to the animated paragraph
+        animationParagraphLabel.text = fullAnimationParagraphText.take(animationParagraphLabel.text.length+1)
+
+        //Only show button when text animation completed
+        proceedButton.isVisible = animationParagraphLabel.text == fullAnimationParagraphText
     }
 
+    /**
+     * Shows the initialized window
+     */
     fun show() {
         frame.isVisible = true
     }

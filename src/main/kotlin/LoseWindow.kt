@@ -27,9 +27,9 @@ class LoseWindow() {
 
     private val panel = JPanel().apply { layout = GridBagLayout() }
 
-    private val winMessageLabel = JLabel("You Lose!")
+    private val loseMessageLabel = JLabel("You Lose!")
 
-    private val winMessageParagraphLabel = JLabel("Quases has exploded and you have died. Try Again?")
+    private val loseMessageParagraphLabel = JLabel("Quases has exploded and you have died. Try Again?")
 
 
 
@@ -39,21 +39,32 @@ class LoseWindow() {
         setupWindow()
     }
 
+    /**
+     * Adds elements to the window at correct positioning with correct size
+     */
     fun setupLayout() {
         frame.preferredSize = Dimension(1280, 720)
-
         frame.add(panel)
+
+
         val gbc = GridBagConstraints().apply {}
-        panel.add(winMessageLabel, gbc)
+        //Title above paragraph
+        panel.add(loseMessageLabel, gbc)
         gbc.gridy = 1
-        panel.add(winMessageParagraphLabel, gbc)
+        panel.add(loseMessageParagraphLabel, gbc)
     }
 
+    /**
+     * Sets color, font and any other non-layout styling of elements
+     */
     fun setupStyles() {
-        winMessageLabel.font = Font(Font.MONOSPACED, Font.PLAIN, 46)
-        winMessageParagraphLabel.font = Font(Font.MONOSPACED, Font.PLAIN, 14)
+        loseMessageLabel.font = Font(Font.MONOSPACED, Font.PLAIN, 46)
+        loseMessageParagraphLabel.font = Font(Font.MONOSPACED, Font.PLAIN, 14)
     }
 
+    /**
+     * Sets window parameters
+     */
     fun setupWindow() {
         frame.isResizable = false
         frame.defaultCloseOperation = JFrame.EXIT_ON_CLOSE
@@ -62,6 +73,9 @@ class LoseWindow() {
         frame.setLocationRelativeTo(null)
     }
 
+    /**
+     * Shows the initialized window
+     */
     fun show() {
         frame.isVisible = true
     }
