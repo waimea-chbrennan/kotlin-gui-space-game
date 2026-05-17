@@ -13,6 +13,7 @@
 
 
 import java.awt.BorderLayout
+import java.awt.Dimension
 import java.awt.FlowLayout
 import java.awt.Font
 import java.awt.GridBagConstraints
@@ -34,10 +35,11 @@ import javax.swing.UIManager
 import javax.swing.border.MatteBorder
 
 
-
+/**
+ * Colour Constants
+ */
 val crtGreen= java.awt.Color(0, 200, 70)
 val dimGreen = java.awt.Color(5, 110, 50)
-
 val darkGreen = java.awt.Color(10, 30, 10)
 val spaceBlack = java.awt.Color(25, 10, 14)
 
@@ -74,9 +76,9 @@ class MainWindow(val game: Game) {
 
 
     // declare locationPanel elements ---------------------------
-    private val upButton = JButton("West")
+    private val upButton = JButton("North")
     private val rightButton = JButton("East")
-    private val leftButton = JButton("North")
+    private val leftButton = JButton("West")
     private val downButton = JButton("South")
 
     private val currentLocationNodeLabel = JLabel("")
@@ -114,13 +116,14 @@ class MainWindow(val game: Game) {
         setupActions()
         setupWindow()
         updateUI()
+        itemsPanel.preferredSize = Dimension(300, 0)
     }
 
     private fun setupLayout() {
         panel.preferredSize = java.awt.Dimension(1280, 720)
         panel.layout = GridBagLayout()
 
-        // Helper to reduce GridBagConstraints boilerplate
+        // Helper to reduce SO MUCH GridBagConstraints boilerplate
         fun gbc(
             gridx: Int, gridy: Int,
             gridwidth: Int = 1, gridheight: Int = 1,
@@ -141,7 +144,7 @@ class MainWindow(val game: Game) {
 
         //Main Panel setup --------------------------------
         panel.add(planetPanel,  gbc(0, 0, gridwidth=2, weightx=0.7, weighty=0.6, insets=Insets(16, 24, 8, 8)))
-        panel.add(itemsPanel,   gbc(2, 0, gridheight=2, weightx=0.2, weighty=1.0))
+        panel.add(itemsPanel,   gbc(2, 0, gridheight=2, weightx=0.0, weighty=1.0))
         panel.add(infoPanel,    gbc(0, 1, weightx=0.2, weighty=0.4))
         panel.add(locationPanel,gbc(1, 1, weightx=0.4, weighty=0.4))
 
@@ -221,7 +224,6 @@ class MainWindow(val game: Game) {
         locationPanel.background = darkGreen
         itemsPanel.background = darkGreen
 
-
         
         //Borders -----------------------------------
         planetPanel.border = MatteBorder(0,3,0,0, crtGreen)
@@ -240,6 +242,9 @@ class MainWindow(val game: Game) {
 
     }
 
+    /**
+     * Window configuration and parameters
+     */
     private fun setupWindow() {
         frame.isResizable = false
         frame.defaultCloseOperation = JFrame.EXIT_ON_CLOSE
@@ -248,22 +253,27 @@ class MainWindow(val game: Game) {
         frame.setLocationRelativeTo(null)
     }
 
+    /**
+     * Adds action listeners functions to the navigation buttons and timer.
+     */
     private fun setupActions() {
+        gameCountdownTimer.addActionListener { handleGameTimerTick() }
+
+        //Planet buttons
         nextPlanetButton.addActionListener { handlePlanetClick(LateralDirection.LEFT) }
         previousPlanetButton.addActionListener { handlePlanetClick(LateralDirection.RIGHT) }
 
+        //Location buttons
         itemPickupButton.addActionListener { handlePickupItem() }
-
         leftButton.addActionListener { handleLocationClick(Direction.LEFT) }
         rightButton.addActionListener { handleLocationClick(Direction.RIGHT) }
         upButton.addActionListener { handleLocationClick(Direction.UP) }
         downButton.addActionListener { handleLocationClick(Direction.DOWN) }
-
-
-        gameCountdownTimer.addActionListener { handleGameTimerTick() }
     }
 
-
+    /**
+     * Decreases current time to reflect players time remaining and check if they have lost the game
+     */
     private fun handleGameTimerTick() {
         game.currentTime--
         updateUI()
@@ -286,10 +296,13 @@ class MainWindow(val game: Game) {
         updateUI()
     }
 
+    /**
+     *Collects item at current location and checks win condition
+     */
     private fun handlePickupItem() {
         game.pickupItem()
         updateUI()
-        //Check Win State!
+        //If player now has winning item in their inventory, they have won
         if(inventory.find{ it.id==WINNING_ITEM_ID }!=null) {
             gameCountdownTimer.stop()
             frame.isVisible = false
@@ -303,39 +316,16 @@ class MainWindow(val game: Game) {
 
 
     fun updateUI() {
+        //Planet Panel ----------------------------------
         currentPlanetNameLabel.text = "Planet: ${game.currentPlanet.name}"
         currentPlanetDescriptionLabel.text = "<html>${game.currentPlanet.description}"
-        currentLocationNodeLabel.text = game.currentLocation.name
-
-        itemPickupButton.isEnabled = game.locationItem != null
-        itemPickupButton.text = if (game.locationItem!=null) "Pick Up: ${game.locationItem?.name}" else "Nothing Here"
-
-//        leftButton.background = if(game.locationWest!=null && game.locationWest!!.isLocked()) java.awt.Color(100,0,0) else java.awt.Color(5,100,5)
-//        upButton.background = if(game.locationNorth!=null && game.locationNorth!!.isLocked()) java.awt.Color(100,0,0) else java.awt.Color(5,100,5)
-//        rightButton.background = if(game.locationEast!=null && game.locationEast!!.isLocked()) java.awt.Color(100,0,0) else java.awt.Color(5,100,5)
-//        downButton.background = if(game.locationSouth!=null && game.locationSouth!!.isLocked()) java.awt.Color(100,0,0) else java.awt.Color(5,100,5)
-
-        leftButton.isEnabled = game.locationWest!=null// && !game.locationWest!!.isLocked()
-        upButton.isEnabled = game.locationNorth!=null// && !game.locationNorth!!.isLocked()
-        rightButton.isEnabled = game.locationEast!=null //&& !game.locationEast!!.isLocked()
-        downButton.isEnabled = game.locationSouth!=null //&& !game.locationSouth!!.isLocked()
-
-
 
         nextPlanetButton.text = if(game.nextPlanet==null) "No Next" else "Next: ${game.nextPlanet!!.name}"
         previousPlanetButton.text = if(game.previousPlanet==null) "No Previous" else "Prev: ${game.previousPlanet!!.name}"
-
-
         nextPlanetButton.isEnabled = game.nextPlanet!=null
         previousPlanetButton.isEnabled = game.previousPlanet!=null
 
-        //Inventory items' description can change so we have to remove them all and re add them.
-        model.removeAllElements()
-        inventory.forEachIndexed { index, item ->
-            model.add(index,"<html><strong>${item.name}</strong> - ${item.getDescription()}")
-        }
-
-
+        //Show and set image only if exists for planet to avoid weird behaviour
         if(game.currentPlanet.imageFile!=null) {
             currentPlanetImageLabel.isVisible = true
             currentPlanetImageLabel.icon = ImageIcon(ClassLoader.getSystemResource(game.currentPlanet.imageFile)).scaled(460,460)
@@ -343,7 +333,34 @@ class MainWindow(val game: Game) {
             currentPlanetImageLabel.isVisible = false
         }
 
-        currentTimeLabel.text = "${game.currentTime/60}:${(game.currentTime%60).toString().padEnd(2,'0')}s"
+
+        //Location Panel ------------------------------------
+        currentLocationNodeLabel.text = game.currentLocation.name
+
+        itemPickupButton.isEnabled = game.locationItem != null
+        itemPickupButton.text = if (game.locationItem!=null) "Pick Up: ${game.locationItem?.name}" else "Nothing Here"
+
+
+        leftButton.isEnabled = game.locationWest!=null && !game.locationWest!!.isLocked()
+        upButton.isEnabled = game.locationNorth!=null && !game.locationNorth!!.isLocked()
+        rightButton.isEnabled = game.locationEast!=null && !game.locationEast!!.isLocked()
+        downButton.isEnabled = game.locationSouth!=null && !game.locationSouth!!.isLocked()
+
+
+        //Inventory Panel ----------------------------------
+
+        //Inventory items' description can change so we have to remove them all and re add them.
+        model.removeAllElements()
+        //Don't show unless item is currently significant.
+        inventory
+            .filter { it.shouldDisplay() }
+            .forEachIndexed { index, item ->
+             model.add(index,"<html><strong>${item.name}</strong> - ${item.getDescription()}")
+        }
+
+        // Title Panel ---------------------------------
+        //Show time as m:ss || mm:ss rather than m:s
+        currentTimeLabel.text = "${game.currentTime/60}:${(game.currentTime%60).toString().padStart(2,'0')}"
 
     }
 

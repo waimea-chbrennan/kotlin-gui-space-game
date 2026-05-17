@@ -124,8 +124,8 @@ class Game {
             if (locations.find { it.id == planet.startLocationId } == null) error("Planet: ${planet.name} does not have a valid startLocation: ${planet.startLocationId}")
         }
 
+        //Check that each location that is refrenced exists, and points back to the proper location
         locations.forEach { location ->
-            //Check that each location that is refrenced exists, and points back to the proper location
             //Iterate using lambda getters allowing to pass inverse direction into loop
             listOf(
                 { location: LocationNode -> location.upId } to { location: LocationNode -> location.downId },
@@ -177,7 +177,7 @@ class Game {
      * Moves on-planet currentLocation to the specified direction.
      * @param direction as Direction enum cardinal direction
      */
-    fun travelLocation(direction: Direction) { //TODO: reliable checking
+    fun travelLocation(direction: Direction) {
         currentLocation = when (direction) {
             Direction.UP -> {locationNorth!!}
             Direction.DOWN -> {locationSouth!!}
@@ -253,8 +253,21 @@ class Item (
         //Enabled if all item dependencies are enabled
         get() = dependsOn == null || inventory.find { it.id == dependsOn && it.enabled }!=null
 
+    /**
+     * Item description is different if enabled/disabled so UI needs to account for this.
+     * @return appropriate item description
+     */
     fun getDescription(): String { //Used to get the correct description rather than checking in the UI
         return if (enabled) {enabledDescription} else {disabledDescription}
+    }
+
+    /**
+     * Instructs the UI whether we should show this item in inventory list.
+     * Items that are dependencies of other items and have been used may not want to be shown by our UI.
+     * @return true if item needs to be displayed, false if it can be safely hidden without confusion
+     */
+    fun shouldDisplay(): Boolean {
+        return inventory.none { it.dependsOn?.equals(this.id) ?: false} //dependsOn is nullable which necessitates the predicate to have a null safe comparison
     }
 
 }
