@@ -1,32 +1,32 @@
 [
   {
     "id": "velun_vent_torch",
-    "name": "Vent Torch",
-    "enabledDescription": "Still pressurised. The bore seal looks welded shut from the inside.",
+    "name": "Welding Torch",
+    "enabledDescription": "Good ignitor and safety.",
     "disabledDescription": "Dead igniter.",
-    "dependsOn": null,
+    "dependsOn": "velun_igniter_patch",
     "locationId": "velun_equipment_yard"
   },
   {
     "id": "velun_igniter_patch",
-    "name": "Igniter Patch",
-    "enabledDescription": "Fitted. Lights on the first strike.",
-    "disabledDescription": "Nothing to fit it to yet.",
-    "dependsOn": "velun_vent_torch",
+    "name": "Replacement Ignitor",
+    "enabledDescription": "Fits a torch.",
+    "disabledDescription": "Fits a torch.",
+    "dependsOn": "velun_safety_gear",
     "locationId": "velun_crew_quarters"
   },
   {
     "id": "velun_safety_gear",
     "name": "Welding Gear",
-    "enabledDescription": "You can now cut the bore seal safely.",
-    "disabledDescription": "Safety first :)",
-    "dependsOn": "velun_igniter_patch",
+    "enabledDescription": "Safety first :)",
+    "disabledDescription": "Missing a bit.",
+    "dependsOn": null,
     "locationId": "velun_upper_tunnel"
   },
   {
     "id": "velun_cold_gear",
     "name": "Insulated Cold Gear",
-    "enabledDescription": "The ice shelf won't kill you now.",
+    "enabledDescription": "Can go outside.",
     "disabledDescription": "Cracked seals.",
     "dependsOn": null,
     "locationId": "velun_fault_mouth"
@@ -34,8 +34,8 @@
   {
     "id": "velun_coolant_manifest",
     "name": "Coolant System Manifest",
-    "enabledDescription": "Cross-references with Crael's refinery schematics. Someone was planning something.",
-    "disabledDescription": "Pressure-locked. Only released down here.",
+    "enabledDescription": "Plans for a coolant system.",
+    "disabledDescription": "Unreadable.",
     "dependsOn": null,
     "locationId": "velun_deep_bore"
   },
@@ -43,7 +43,7 @@
   {
     "id": "mireth_garrison_badge",
     "name": "Garrison ID Badge",
-    "enabledDescription": "Chip intact. Biometric readers should accept it.",
+    "enabledDescription": "Chip intact.",
     "disabledDescription": "Fried authentication chip.",
     "dependsOn": null,
     "locationId": "mireth_desert_flats"
@@ -51,7 +51,7 @@
   {
     "id": "mireth_chip_reader",
     "name": "Field Chip Reader",
-    "enabledDescription": "Badge re-initialised. It'll pass a scanner.",
+    "enabledDescription": "Badge re-initialised.",
     "disabledDescription": "No badge loaded.",
     "dependsOn": "mireth_garrison_badge",
     "locationId": "mireth_barracks"
@@ -59,23 +59,23 @@
   {
     "id": "mireth_cache_keycard",
     "name": "Armoury Keycard",
-    "enabledDescription": "Authenticated. The weapons cache will cycle open.",
-    "disabledDescription": "Handshake fails without a chip reader.",
+    "enabledDescription": "Authenticated.",
+    "disabledDescription": "Chip reader needed.",
     "dependsOn": "mireth_chip_reader",
     "locationId": "mireth_comms_tower"
   },
   {
     "id": "mireth_parade_orders",
     "name": "Evacuation Orders",
-    "enabledDescription": "Final orders, counter-signed. The command block was left on manual release.",
-    "disabledDescription": "Slipped under the gate. Need command block access to retrieve it.",
+    "enabledDescription": "Can stop autonomous machinery.",
+    "disabledDescription": "",
     "dependsOn": null,
     "locationId": "mireth_parade_ground"
   },
   {
     "id": "mireth_hazard_suit",
     "name": "Hazard Clearance Suit",
-    "enabledDescription": "Sealed and pressurised. Presso's flats won't touch you.",
+    "enabledDescription": "Safe from Presso's atmosphere.",
     "disabledDescription": "Locked in the weapons cache.",
     "dependsOn": null,
     "locationId": "mireth_weapons_cache"
@@ -84,47 +84,47 @@
   {
     "id": "crael_debris_cutter",
     "name": "Hydraulic Debris Cutter",
-    "enabledDescription": "The ring debris blocking the outcrop can be cleared.",
-    "disabledDescription": "Dry hydraulic reservoir.",
+    "enabledDescription": "Can clear debris.",
+    "disabledDescription": "Faulty.",
     "dependsOn": null,
     "locationId": "crael_surface_dock"
   },
   {
     "id": "crael_ping_decoder",
     "name": "Signal Decoder",
-    "enabledDescription": "Salvaged from the outcrop. Needs a frequency reference to lock on.",
-    "disabledDescription": "Blocked by debris.",
+    "enabledDescription": "Needs a frequency to lock on.",
+    "disabledDescription": "Faulty.",
     "dependsOn": null,
     "locationId": "crael_ring_view"
   },
   {
     "id": "crael_frequency_spool",
     "name": "Frequency Spool",
-    "enabledDescription": "Decoder locked on. The refinery ping is readable.",
-    "disabledDescription": "No decoder to feed it into.",
+    "enabledDescription": "Decoder locked on.",
+    "disabledDescription": "No signal decoder.",
     "dependsOn": "crael_ping_decoder",
     "locationId": "crael_orbital_tether"
   },
   {
     "id": "crael_smelter_rod",
     "name": "Smelter Access Rod",
-    "enabledDescription": "The coolant routing checks out. The lower bay gate will cycle.",
-    "disabledDescription": "Gate mechanism needs the coolant lines read first.",
+    "enabledDescription": "Can successfully operate the cooling system.",
+    "disabledDescription": "No idea what to do with it.",
     "dependsOn": "velun_coolant_manifest",
     "locationId": "crael_refinery_lower"
   },
   {
     "id": "crael_broadcast_access",
     "name": "Broadcast Room Access Code",
-    "enabledDescription": "Ping source isolated. The broadcast room door responds.",
-    "disabledDescription": "Needs the lower bay cleared first.",
+    "enabledDescription": "Broadcast room accessible safely",
+    "disabledDescription": "WARNING: broadcast room temp high",
     "dependsOn": "crael_smelter_rod",
     "locationId": "crael_refinery_upper"
   },
   {
     "id": "crael_transmission_fragment",
     "name": "Transmission Fragment",
-    "enabledDescription": "A colonial distress transmission. The Presso rig's autonomous systems are keyed to this signal.",
+    "enabledDescription": "A recorded static unlock code.",
     "disabledDescription": "Terminal locked.",
     "dependsOn": null,
     "locationId": "crael_broadcast_room"
@@ -133,24 +133,24 @@
   {
     "id": "presso_fuel_connector",
     "name": "Fuel Line Connector",
-    "enabledDescription": "Pressure-rated. Fits the drill arm's fuel cutoff valve.",
-    "disabledDescription": "Nothing survives the flats without a rated suit.",
+    "enabledDescription": "Pressure-rated. Fits the drill arm'",
+    "disabledDescription": "Missing seal.",
     "dependsOn": null,
     "locationId": "presso_corrosive_flats"
   },
   {
     "id": "presso_shutoff_procedure",
     "name": "Drill Arm Shutoff Procedure",
-    "enabledDescription": "Full autonomous cycle override. With the connector fitted, the arms can be stopped safely.",
-    "disabledDescription": "Shaft sealed — autonomous systems never received the shutdown signal.",
+    "enabledDescription": "How to: not die when stopping arms.",
+    "disabledDescription": "Damaged.",
     "dependsOn": null,
     "locationId": "presso_maintenance_shaft"
   },
   {
     "id": "presso_drill_shutoff",
     "name": "Drill Arm Shutoff Code",
-    "enabledDescription": "Arms stopped. The drill bay is still.",
-    "disabledDescription": "Need the procedure and the connector first.",
+    "enabledDescription": "Arms stopped. ",
+    "disabledDescription": "Need the procedure to stop arms.",
     "dependsOn": "presso_shutoff_procedure",
     "locationId": "presso_fuel_storage"
   },
@@ -158,8 +158,8 @@
   {
     "id": "escape_ship",
     "name": "Hyperdrive Evacuation Ship",
-    "enabledDescription": "Fuelled and intact. It was always meant to be found last. You can leave.",
-    "disabledDescription": "Arms still cycling. You won't survive getting close.",
+    "enabledDescription": "Someone was kind and left it. You can leave.",
+    "disabledDescription": "Unreachable.",
     "dependsOn": null,
     "locationId": "presso_drill_arm_bay"
   }

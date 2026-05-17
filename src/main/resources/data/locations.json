@@ -1,8 +1,8 @@
 [
   {
     "id": "velun_surface_rift",
-    "name": "Surface Rift — Warm Side",
-    "lockedByItemId": "",
+    "name": "Fault Line",
+    "lockedByItemId": "velun_cold_gear",
     "upId": "velun_fault_mouth",
     "rightId": "velun_ice_shelf",
     "downId": "",
@@ -29,7 +29,7 @@
   {
     "id": "velun_equipment_yard",
     "name": "Surface Equipment Yard",
-    "lockedByItemId": "",
+    "lockedByItemId": "velun_cold_gear",
     "upId": "",
     "rightId": "velun_fault_mouth",
     "downId": "",
@@ -47,7 +47,7 @@
   {
     "id": "velun_drill_chamber",
     "name": "Drill Chamber — Level 3",
-    "lockedByItemId": "",
+    "lockedByItemId": "velun_cold_gear",
     "upId": "velun_deep_bore",
     "rightId": "velun_crew_quarters",
     "downId": "velun_upper_tunnel",
@@ -65,7 +65,7 @@
   {
     "id": "velun_deep_bore",
     "name": "Deep Bore — Terminus",
-    "lockedByItemId": "velun_safety_gear",
+    "lockedByItemId": "velun_vent_torch",
     "upId": "",
     "rightId": "",
     "downId": "velun_drill_chamber",
@@ -147,7 +147,7 @@
 
   {
     "id": "crael_ring_approach",
-    "name": "Ring Approach — Debris Field",
+    "name": "Ring Approach",
     "lockedByItemId": "",
     "upId": "crael_surface_dock",
     "rightId": "",
@@ -156,7 +156,7 @@
   },
   {
     "id": "crael_surface_dock",
-    "name": "Surface Docking Platform",
+    "name": "Surface Dock",
     "lockedByItemId": "",
     "upId": "crael_processing_hub",
     "rightId": "crael_ring_view",
@@ -165,7 +165,7 @@
   },
   {
     "id": "crael_ring_view",
-    "name": "Ring Observation Outcrop",
+    "name": "Ring Observation",
     "lockedByItemId": "crael_debris_cutter",
     "upId": "",
     "rightId": "",
@@ -174,7 +174,7 @@
   },
   {
     "id": "crael_processing_hub",
-    "name": "Ore Processing Hub",
+    "name": "Ore Processing",
     "lockedByItemId": "",
     "upId": "crael_orbital_tether",
     "rightId": "",
@@ -183,7 +183,7 @@
   },
   {
     "id": "crael_orbital_tether",
-    "name": "Orbital Tether Station",
+    "name": "Tether Station",
     "lockedByItemId": "",
     "upId": "crael_refinery_upper",
     "rightId": "",
@@ -192,7 +192,7 @@
   },
   {
     "id": "crael_refinery_upper",
-    "name": "Decaying Refinery — Upper Level",
+    "name": "Refinery Upper",
     "lockedByItemId": "",
     "upId": "",
     "rightId": "crael_broadcast_room",
@@ -201,7 +201,7 @@
   },
   {
     "id": "crael_refinery_lower",
-    "name": "Refinery — Lower Smelting Bay",
+    "name": "Refinery Lower",
     "lockedByItemId": "crael_frequency_spool",
     "upId": "",
     "rightId": "crael_refinery_upper",
@@ -210,7 +210,7 @@
   },
   {
     "id": "crael_broadcast_room",
-    "name": "Maintenance Ping Broadcast Room",
+    "name": "Broadcast Room",
     "lockedByItemId": "crael_broadcast_access",
     "upId": "",
     "rightId": "",
@@ -229,8 +229,8 @@
   },
   {
     "id": "presso_rig_exterior",
-    "name": "Mining Rig — Exterior Shell",
-    "lockedByItemId": "",
+    "name": "Rig Exterior",
+    "lockedByItemId": "mireth_hazard_suit",
     "upId": "presso_rig_airlock",
     "rightId": "presso_corrosive_flats",
     "downId": "presso_descent_pad",
@@ -238,8 +238,8 @@
   },
   {
     "id": "presso_corrosive_flats",
-    "name": "Corrosive Flats — Needle Rain",
-    "lockedByItemId": "mireth_hazard_suit",
+    "name": "Corrosive Flats",
+    "lockedByItemId": "",
     "upId": "",
     "rightId": "",
     "downId": "",
@@ -247,7 +247,7 @@
   },
   {
     "id": "presso_rig_airlock",
-    "name": "Rig Airlock — Pressurised",
+    "name": "Rig Airlock",
     "lockedByItemId": "",
     "upId": "presso_control_deck",
     "rightId": "",
@@ -265,7 +265,7 @@
   },
   {
     "id": "presso_drill_arm_bay",
-    "name": "Drill Arm Bay — Still Cycling",
+    "name": "Drill Arm Bay",
     "lockedByItemId": "presso_drill_shutoff",
     "upId": "",
     "rightId": "",
@@ -274,7 +274,7 @@
   },
   {
     "id": "presso_fuel_storage",
-    "name": "Fuel Storage — Pressurised Tank",
+    "name": "Fuel Storage",
     "lockedByItemId": "",
     "upId": "presso_maintenance_shaft",
     "rightId": "presso_control_deck",
@@ -283,7 +283,7 @@
   },
   {
     "id": "presso_maintenance_shaft",
-    "name": "Maintenance Shaft — Deep Level",
+    "name": "Maintenance Shaft",
     "lockedByItemId": "crael_transmission_fragment",
     "upId": "",
     "rightId": "",

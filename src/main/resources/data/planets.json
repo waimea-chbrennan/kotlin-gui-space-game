@@ -3,7 +3,7 @@
     "name": "Velun",
     "description": "A tidally locked ice world — one face always burning, the other frozen solid. The warm side cracked open centuries ago and the mining colony followed, boring deep into the fault lines. The tunnels go further down than the original survey said they would.",
     "distance": 72400000,
-    "startLocationId": "velun_surface_rift",
+    "startLocationId": "velun_upper_tunnel",
     "imageFile": "images/velun.png"
   },
   {
@@ -17,12 +17,14 @@
     "name": "Crael",
     "description": "The rings aren't ice. They're glass — what's left of a moon that came apart about three hundred years ago, nobody agrees on why. The ore processing operation out here kept running on automated systems long after the crew left. Some of it still is.",
     "distance": 890000000,
-    "startLocationId": "crael_ring_approach"
+    "startLocationId": "crael_ring_approach",
+    "imageFile": "images/crael.png"
   },
   {
     "name": "Presso",
     "description": "The atmosphere here will dissolve unshielded equipment in about four hours. The mining rigs were built to handle it — heavily armoured, mostly autonomous, and apparently still cycling. Someone should have switched them off.",
     "distance": 97000000,
-    "startLocationId": "presso_descent_pad"
+    "startLocationId": "presso_descent_pad",
+    "imageFile": "images/presso.png"
   }
 ]
