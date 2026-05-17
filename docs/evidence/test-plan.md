@@ -84,6 +84,9 @@ Testing whether we are able to move in a given direction (up down left right) be
 ### Test Data To Use
 
 `Velun, Upper pressurised tunnel - click south`
+`Mireth, Perimeter Gate - click north`
+`Mireth, Perimeter Gate - click east`
+`Mireth, Desert Flats - click west`
 
 ### Expected Test Result
 
