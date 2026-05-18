@@ -22,6 +22,9 @@ Run game.
 
 The lore and instructions window appears followed by the main window when dismissed.
 
+A rough layout of the mainwindow:
+![Intended mainwindow layout](screenshots/mainwindow_layout_planned.png)
+
 ---
 
 ## Testing Planet Movement: VALID 
@@ -64,8 +67,8 @@ Mireth should move to velun and Crael should move right to Presso and their imag
 
 ## Testing Planet Movement: INVALID
 
-The player should not be able to move outside of the list of planets as this would cause a crash.
 
+The player should not be able to move outside of the list of planets as this would cause a crash.
 ### Test Data To Use
 
 `Velun - click previous`
@@ -92,6 +95,10 @@ Testing whether we are able to move in a given direction (up down left right) be
 
 The game should update the current location to reflect this move in this case becoming the Fault Line Mouth and staying on planet.
 Additionally, the movement buttons in the location panel should reflect the possible moves from this new location.
+
+See images for specific expected results. 
+![Velun Location Map](screenshots/velun.png)
+![Mireth Location Map](screenshots/mireth.png)
 
 ---   
 
