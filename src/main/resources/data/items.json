@@ -115,9 +115,9 @@
   },
   {
     "id": "crael_broadcast_access",
-    "name": "Broadcast Room Access Code",
+    "name": "Broadcast Room Code",
     "enabledDescription": "Broadcast room accessible safely",
-    "disabledDescription": "WARNING: broadcast room temp high",
+    "disabledDescription": "Room overheating, unsafe.",
     "dependsOn": "crael_smelter_rod",
     "locationId": "crael_refinery_upper"
   },
@@ -154,7 +154,6 @@
     "dependsOn": "presso_shutoff_procedure",
     "locationId": "presso_fuel_storage"
   },
-
   {
     "id": "escape_ship",
     "name": "Hyperdrive Evacuation Ship",

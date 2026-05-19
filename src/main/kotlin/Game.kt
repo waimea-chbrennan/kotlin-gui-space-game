@@ -1,8 +1,24 @@
+/**
+ * =====================================================================
+ * Programming Project for NCEA Level 3, Standard 91906
+ * ---------------------------------------------------------------------
+ * Project Name:   kotlin-gui-space-game
+ * Project Author: Connor Brennan
+ * GitHub Repo: https://github.com/waimea-chbrennan/kotlin-gui-space-game
+ * ---------------------------------------------------------------------
+ * Notes:
+ * Can you escape the solar system before the sun explodes?
+ * =====================================================================
+ */
+
 import com.google.gson.Gson
 
+//directory relative to src/main/resources where JSON data is stored
 const val DATA_DIR = "data/"
 
+//inventory needs to be public for planet and item methods, not just scoped to game class unfortunately
 val inventory = mutableListOf<Item>()
+
 enum class Direction { //Cardinal directions are the valid moves for LocationNode travel
     UP,
     DOWN,
@@ -143,12 +159,12 @@ class Game {
                 if (getInverseDirectionId(referencedLocation) != location.id) error("Location ${location.id} references ${referencedLocation.id}, but is not refrenced back.")
             }
         }
+
+        //Check each item can be placed in a valid location
+        items.forEach { item ->
+            if(locations.find{it.id==item.locationId}==null) error("Item: ${item.name} has invalid location: ${item.locationId}")
+        }
     }
-
-
-
-
-
 
 
 

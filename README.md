@@ -5,9 +5,9 @@
 #### *Can you escape the solar system before the sun explodes?*
 
 You are a sole traveler stranded in the Quases system when you receive sudden notice that it's star will explode!
-Everyone has abandoned their bases, and you are left with no way of travel! Are you able to scavenge enough resources to survive the explosion? 
+Everyone has abandoned their bases, and you are left with no way to escape the system! Are you able to scavenge what you need to survive the explosion? 
 
-This is a text-based adventure, with additional graphical elements.
+This is an adventure with some graphical elements.
 
 ---
 
@@ -32,3 +32,11 @@ The project is written in the [Kotlin](https://kotlinlang.org) programming langu
 -[x] Self-defined types
 -[x] Using non-core API, library or framework
 -[ ] Using complex data structures (e.g. stacks, queues, trees)
+
+---
+
+## Declaration
+
+A LLM has been used to generate the JSON game data used but has in no other way assisted with source files, configuration files or project documentation.
+
+Dedicated to the memory of Jock Isdale

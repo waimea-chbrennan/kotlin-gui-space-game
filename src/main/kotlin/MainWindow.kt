@@ -51,6 +51,8 @@ val spaceBlack = java.awt.Color(25, 10, 14)
  *
  * @param width new width of image
  * @param height new height of image
+ *
+ * @return the scaled image
  */
 fun ImageIcon.scaled(width: Int, height: Int): ImageIcon =
     ImageIcon(image.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH))
@@ -119,6 +121,9 @@ class MainWindow(val game: Game) {
         itemsPanel.preferredSize = Dimension(300, 0)
     }
 
+    /**
+     * Adds elements to their correct place on parent panel and planetPanel, itemsPanel, locationPanel, infoPanel
+     */
     private fun setupLayout() {
         panel.preferredSize = java.awt.Dimension(1280, 720)
         panel.layout = GridBagLayout()
@@ -184,7 +189,7 @@ class MainWindow(val game: Game) {
         }
 
 
-        val centerCell = JPanel().apply { //Simple vertical layout needed to avoid gridBag conflict with 2 center elements
+        val centerCell = JPanel().apply { //Simple vertical layout needed to avoid conflict with 2 center elements
             layout = BoxLayout(this, BoxLayout.Y_AXIS)
             isOpaque = false
             currentLocationNodeLabel.alignmentX = java.awt.Component.CENTER_ALIGNMENT
@@ -200,6 +205,9 @@ class MainWindow(val game: Game) {
         locationPanel.add(downButton,  compassGbc(1, 2))
     }
 
+    /**
+     * Adds initial styling for font, backgrounds, buttons and borders
+     **/
     private fun setupStyles() {
         // Text ------------------------------------
         titleLabel.font = Font(Font.MONOSPACED, Font.BOLD, 32)
@@ -286,11 +294,21 @@ class MainWindow(val game: Game) {
         }
     }
 
+    /**
+     * Travel to next or previous planet (left or right)
+     *
+     * @param direction the lateral (LR) direction requested to travel to.
+     */
     private fun handlePlanetClick(direction: LateralDirection) {
         game.travelPlanetRelative(direction)
         updateUI()
     }
 
+    /**
+     * Handle request to travel in cardinal direction to another location.
+     *
+     * @param direction the cardinal direction that the player wishes to move to.
+     */
     private fun handleLocationClick(direction: Direction) {
         game.travelLocation(direction)
         updateUI()
@@ -313,8 +331,9 @@ class MainWindow(val game: Game) {
     }
 
 
-
-
+    /**
+     * update the elements where needed to ensure they reflect current game state
+     */
     fun updateUI() {
         //Planet Panel ----------------------------------
         currentPlanetNameLabel.text = "Planet: ${game.currentPlanet.name}"
